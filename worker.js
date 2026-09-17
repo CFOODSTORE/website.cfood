@@ -53,6 +53,7 @@ const HOME_SCHEMA = JSON.stringify({
       '@id': 'https://cfood.store/#website',
       url: 'https://cfood.store/',
       name: 'Challenge Food',
+      alternateName: ['Challenge Food SARL', 'Cfood'],
       publisher: { '@id': 'https://cfood.store/#organization' },
       inLanguage: ['en', 'fr']
     }
@@ -114,7 +115,7 @@ function enhanceHome(response) {
     })
     .on('head', {
       element(element) {
-        element.append(`<link rel="alternate" type="application/rss+xml" title="Challenge Food Buyer Resources" href="/feed.xml"><script type="application/ld+json">${HOME_SCHEMA}</script>`, { html: true });
+        element.append(`<meta property="og:site_name" content="Challenge Food"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Challenge Food SARL | Madagascar Bourbon Vanilla Export"><meta name="twitter:description" content="Madagascar Bourbon vanilla supply for professional buyers."><meta name="twitter:image" content="https://cfood.store/assets/og-image.jpg"><link rel="manifest" href="/site.webmanifest"><link rel="apple-touch-icon" href="/assets/logo.png"><link rel="alternate" type="application/rss+xml" title="Challenge Food Buyer Resources" href="/feed.xml"><script type="application/ld+json">${HOME_SCHEMA}</script>`, { html: true });
       }
     })
     .on('footer.site-footer', {
