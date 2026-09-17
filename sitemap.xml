@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://cfood.store/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://cfood.store/fr/vanille-de-madagascar.html</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://cfood.store/en/madagascar-vanilla.html</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://cfood.store/fr/fournisseur-vanille-madagascar.html</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://cfood.store/en/madagascar-vanilla-supplier.html</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://cfood.store/fr/grossiste-vanille-madagascar.html</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://cfood.store/en/madagascar-vanilla-wholesale.html</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://cfood.store/fr/vanille-grade-a-madagascar.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://cfood.store/en/madagascar-grade-a-vanilla.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://cfood.store/fr/vanille-grade-b-extraction-madagascar.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
