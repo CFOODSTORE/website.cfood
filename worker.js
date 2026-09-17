@@ -107,6 +107,11 @@ async function handleAdminApi(request, env) {
 
 function enhanceHome(response) {
   return new HTMLRewriter()
+    .on('script[type="application/ld+json"]', {
+      element(element) {
+        element.remove();
+      }
+    })
     .on('head', {
       element(element) {
         element.append(`<link rel="alternate" type="application/rss+xml" title="Challenge Food Buyer Resources" href="/feed.xml"><script type="application/ld+json">${HOME_SCHEMA}</script>`, { html: true });
