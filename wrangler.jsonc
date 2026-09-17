@@ -2,6 +2,13 @@
   "name": "website-cfood",
   "main": "worker.js",
   "compatibility_date": "2026-09-17",
+  "keep_vars": true,
+  "vars": {
+    "ADMIN_EMAIL": "commercial.export@cfood.store"
+  },
+  "secrets": {
+    "required": ["ADMIN_PASSWORD", "GITHUB_TOKEN", "SESSION_SECRET"]
+  },
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
