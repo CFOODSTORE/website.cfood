@@ -1,0 +1,97 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Build changed URL list and notify IndexNow
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess, time, urllib.request, urllib.error
+          import xml.etree.ElementTree as ET
+
+          HOST = 'cfood.store'
+          KEY = '77502104a9acc81521beefd69c7bcd4e'
+          KEY_LOCATION = f'https://{HOST}/{KEY}.txt'
+
+          def all_sitemap_urls():
+              try:
+                  root = ET.parse('sitemap.xml').getroot()
+                  ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+                  return [x.text.strip() for x in root.findall('s:url/s:loc', ns) if x.text]
+              except Exception:
+                  return [f'https://{HOST}/']
+
+          event = os.environ.get('EVENT_NAME', '')
+          before = os.environ.get('BEFORE', '')
+          after = os.environ.get('AFTER', 'HEAD')
+
+          if event == 'workflow_dispatch':
+              urls = all_sitemap_urls()
+          else:
+              try:
+                  if before and before != '0' * 40:
+                      out = subprocess.check_output(['git', 'diff', '--name-only', before, after], text=True)
+                  else:
+                      out = subprocess.check_output(['git', 'diff-tree', '--no-commit-id', '--name-only', '-r', after], text=True)
+                  changed = [x.strip() for x in out.splitlines() if x.strip()]
+              except Exception:
+                  changed = []
+
+              if 'sitemap.xml' in changed:
+                  urls = all_sitemap_urls()
+              else:
+                  urls = []
+                  for path in changed:
+                      if path == 'index.html' or path in {'worker.js', 'script.js'}:
+                          urls.append(f'https://{HOST}/')
+                      elif path.endswith('.html') and (path.startswith('fr/') or path.startswith('en/')):
+                          urls.append(f'https://{HOST}/{path}')
+                  urls = sorted(set(urls))
+
+          if not urls:
+              print('No public page URLs changed; nothing to submit.')
+              raise SystemExit(0)
+
+          # Give the Cloudflare deployment a short head start before notifying crawlers.
+          time.sleep(60)
+
+          payload = json.dumps({
+              'host': HOST,
+              'key': KEY,
+              'keyLocation': KEY_LOCATION,
+              'urlList': urls[:10000]
+          }).encode('utf-8')
+          request = urllib.request.Request(
+              'https://api.indexnow.org/indexnow',
+              data=payload,
+              headers={'Content-Type': 'application/json; charset=utf-8'},
+              method='POST'
+          )
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  print('IndexNow status:', response.status)
+                  print('Submitted URLs:', len(urls))
+                  for url in urls:
+                      print(url)
+          except urllib.error.HTTPError as exc:
+              print('IndexNow HTTP error:', exc.code, exc.read().decode('utf-8', 'ignore'))
+              raise
+          PY
