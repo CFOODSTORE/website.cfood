@@ -3,3 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/admin/
 Sitemap: https://cfood.store/sitemap.xml
+Sitemap: https://cfood.store/sitemap-images.xml
