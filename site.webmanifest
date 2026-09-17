@@ -1,0 +1,12 @@
+{
+  "name": "Challenge Food SARL",
+  "short_name": "Challenge Food",
+  "description": "Madagascar Bourbon vanilla supply for professional buyers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f7f5",
+  "theme_color": "#173f2b",
+  "icons": [
+    {"src":"/assets/logo.png","sizes":"any","type":"image/png","purpose":"any"}
+  ]
+}
