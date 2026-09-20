@@ -560,3 +560,5 @@ html.js .cinematic-story.section-gated.section-active{
   .page-wipe{display:none!important}
   .loader-pod-line{animation:none!important;stroke-dashoffset:0!important}
 }
+
+html.intro-lock,html.intro-lock body{overflow:hidden!important}
