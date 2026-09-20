@@ -320,3 +320,114 @@ html.js .reveal-ready.is-visible{opacity:1;translate:0 0;transition:opacity .8s 
   .hero-image img,.photo-band img,.story-frame img,.magnetic{transform:none!important}
   html.js .reveal-ready,html.js .reveal-ready.is-visible{translate:none!important}
 }
+
+
+/* Viewport-gated chapters: major sections stay visually dormant until reached */
+html.js .section-gated{
+  opacity:0;
+  transform:translate3d(0,46px,0) scale(.988);
+  clip-path:inset(5% 0 5% 0 round 28px);
+  filter:blur(7px);
+  transition:
+    opacity .78s var(--exp-ease),
+    transform 1s var(--exp-ease),
+    clip-path 1s var(--exp-ease),
+    filter .78s ease;
+  will-change:opacity,transform,clip-path,filter;
+}
+html.js .section-gated.section-active{
+  opacity:1;
+  transform:none;
+  clip-path:inset(0 0 0 0 round 0);
+  filter:none;
+}
+html.js .section-gated.section-leaving{
+  opacity:.22;
+  transform:translate3d(0,-18px,0) scale(.995);
+  filter:blur(2px);
+}
+html.js .cinematic-story.section-gated{
+  transform:none;
+  clip-path:inset(4% 0 4% 0);
+}
+html.js .cinematic-story.section-gated.section-active{
+  clip-path:inset(0);
+}
+
+/* Audio controls */
+.floating-controls{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:70;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.floating-controls .floating-rfq{
+  position:static;
+  right:auto;
+  bottom:auto;
+}
+.sound-toggle{
+  height:46px;
+  min-width:46px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:1px solid rgba(13,61,39,.12);
+  border-radius:999px;
+  background:rgba(255,255,255,.94);
+  color:var(--exp-forest);
+  box-shadow:0 16px 45px rgba(6,39,23,.18);
+  backdrop-filter:blur(16px);
+  cursor:pointer;
+  padding:0 14px;
+  font:850 .72rem/1 Inter,ui-sans-serif,system-ui,sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:transform .28s var(--exp-ease),background .28s ease,box-shadow .28s ease;
+}
+.sound-toggle:hover{transform:translateY(-3px);box-shadow:0 20px 52px rgba(6,39,23,.23)}
+.sound-toggle:focus-visible{outline:3px solid rgba(217,179,100,.48);outline-offset:3px}
+.sound-icon{width:18px;height:18px;fill:currentColor;flex:none}
+.sound-icon-off{display:none}
+.sound-toggle[aria-pressed="false"] .sound-icon-on{display:none}
+.sound-toggle[aria-pressed="false"] .sound-icon-off{display:block}
+.sound-toggle[aria-pressed="false"]{color:#66746b;background:rgba(248,248,246,.94)}
+.sound-toggle.is-armed::after{
+  content:"";
+  width:6px;height:6px;border-radius:50%;
+  background:#45a96f;
+  box-shadow:0 0 0 5px rgba(69,169,111,.12);
+}
+
+/* Tiny visual response synchronized with click SFX */
+.sfx-pressed{animation:sfxPress .18s ease-out}
+@keyframes sfxPress{
+  50%{transform:scale(.965)}
+}
+
+@media(max-width:700px){
+  .floating-controls{right:12px;bottom:12px;gap:7px}
+  .floating-controls .floating-rfq{padding:11px 14px}
+  .sound-toggle{width:44px;min-width:44px;height:44px;padding:0}
+  .sound-label{display:none}
+  html.js .section-gated{
+    transform:translate3d(0,28px,0) scale(.994);
+    clip-path:inset(3% 0 3% 0 round 20px);
+    filter:blur(4px);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html.js .section-gated,
+  html.js .section-gated.section-active,
+  html.js .section-gated.section-leaving{
+    opacity:1!important;
+    transform:none!important;
+    clip-path:none!important;
+    filter:none!important;
+  }
+}
