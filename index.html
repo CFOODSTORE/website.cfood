@@ -38,20 +38,22 @@
       <a href="#special" data-i18n="nav_special">Special requests</a>
       <a href="#quality" data-i18n="nav_quality">Quality</a>
       <a href="#compliance" data-i18n="nav_compliance">Credentials</a>
-      <a class="nav-cta" href="#requests" data-open-tab="quote" data-i18n="nav_quote">Order / Quote</a>
+      <a class="nav-cta magnetic" href="#requests" data-open-tab="quote" data-i18n="nav_quote">Order / Quote</a>
     </nav>
   </div>
 </header>
 
 <main>
   <section class="hero">
+    <div class="hero-image" aria-hidden="true"><img src="assets/hero-beans.webp" alt=""></div>
+    <div class="hero-glow" aria-hidden="true"></div>
     <div class="hero-overlay"></div>
     <div class="container hero-content">
       <span class="eyebrow" data-i18n="hero_eyebrow">Direct origin · Madagascar</span>
       <h1 data-i18n="hero_title">Madagascar Bourbon Vanilla for International Buyers</h1>
       <p data-i18n="hero_text">Challenge Food SARL is a Madagascar-registered import-export company whose registered activity includes the export of plant products, notably vanilla. We prepare direct-origin offers for importers, distributors, flavour houses and food manufacturers.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#requests" data-open-tab="quote" data-i18n="hero_quote">Order / Request a quotation</a>
+        <a class="btn btn-primary magnetic" href="#requests" data-open-tab="quote" data-i18n="hero_quote">Order / Request a quotation</a>
         <a class="btn btn-secondary" href="#compliance" data-i18n="hero_credentials">Supplier credentials</a>
       </div>
       <div class="hero-facts">
@@ -105,30 +107,65 @@
     </div>
   </section>
 
-  <section class="journey section" aria-labelledby="journey-title">
-    <div class="container journey-shell">
-      <div class="journey-copy reveal">
-        <span class="section-kicker" data-i18n="quality_kicker">Origin, preparation & quality</span>
-        <h2 id="journey-title" data-i18n="quality_title">From green pods to prepared export lots</h2>
-        <p data-i18n="company_p2">Our objective is a clear supplier relationship: identified origin, agreed specifications, documented lots and coordinated export paperwork.</p>
-        <a class="journey-link" href="#quality"><span data-i18n="nav_quality">Quality</span><b aria-hidden="true">↘</b></a>
+  <section class="cinematic-story" id="vanilla-journey" aria-labelledby="story-title">
+    <div class="story-pin">
+      <div class="story-media" aria-hidden="true">
+        <figure class="story-frame story-frame-1">
+          <img src="assets/green-vine.webp" alt="">
+          <div class="story-frame-shade"></div>
+          <span class="story-watermark">ORIGIN</span>
+        </figure>
+        <figure class="story-frame story-frame-2">
+          <img src="assets/green-basket.webp" alt="">
+          <div class="story-frame-shade"></div>
+          <span class="story-watermark">HARVEST</span>
+        </figure>
+        <figure class="story-frame story-frame-3">
+          <img src="assets/hero-beans.webp" alt="">
+          <div class="story-frame-shade"></div>
+          <span class="story-watermark">PREPARATION</span>
+        </figure>
+        <figure class="story-frame story-frame-4">
+          <img src="assets/crystal-beans.webp" alt="">
+          <div class="story-frame-shade"></div>
+          <span class="story-watermark">EXPORT</span>
+        </figure>
       </div>
-      <div class="journey-stack" aria-label="Vanilla journey">
-        <figure class="journey-card journey-card-a" data-depth="0.035">
-          <span class="journey-index">01</span>
-          <img src="assets/green-vine.webp" alt="Vanilla pods growing on the vine in Madagascar" loading="lazy">
-          <figcaption data-i18n="gallery_1">Green vanilla at harvest stage</figcaption>
-        </figure>
-        <figure class="journey-card journey-card-b" data-depth="0.06">
-          <span class="journey-index">02</span>
-          <img src="assets/green-basket.webp" alt="Harvested green vanilla pods in Madagascar" loading="lazy">
-          <figcaption data-i18n="gallery_2">Harvested green vanilla</figcaption>
-        </figure>
-        <figure class="journey-card journey-card-c" data-depth="0.085">
-          <span class="journey-index">03</span>
-          <img src="assets/hero-beans.webp" alt="Prepared Madagascar Bourbon vanilla beans" loading="lazy">
-          <figcaption data-i18n="gallery_3">Prepared and sorted vanilla beans</figcaption>
-        </figure>
+      <div class="container story-ui">
+        <div class="story-heading">
+          <span class="section-kicker light" data-i18n="quality_kicker">Origin, preparation & quality</span>
+          <h2 id="story-title" data-i18n="quality_title">From green pods to prepared export lots</h2>
+        </div>
+        <div class="story-copy-stage">
+          <article class="story-step story-step-1">
+            <span class="story-count">01 <small>/ 04</small></span>
+            <h3 data-i18n="gallery_1">Green vanilla at harvest stage</h3>
+            <p data-i18n="company_p1">We organize vanilla offers around the buyer's required grade, length, moisture, quantity, packing and destination. Commercial specifications are confirmed by lot before commitment.</p>
+          </article>
+          <article class="story-step story-step-2">
+            <span class="story-count">02 <small>/ 04</small></span>
+            <h3 data-i18n="gallery_2">Harvested green vanilla</h3>
+            <p data-i18n="company_p2">Our objective is a clear supplier relationship: identified origin, agreed specifications, documented lots and coordinated export paperwork.</p>
+          </article>
+          <article class="story-step story-step-3">
+            <span class="story-count">03 <small>/ 04</small></span>
+            <h3 data-i18n="gallery_3">Prepared and sorted vanilla beans</h3>
+            <p data-i18n="q1_text">Grade, length range, moisture target and relevant analytical information are confirmed for the offered lot.</p>
+          </article>
+          <article class="story-step story-step-4">
+            <span class="story-count">04 <small>/ 04</small></span>
+            <h3 data-i18n="origin_title">Madagascar Bourbon Vanilla</h3>
+            <p data-i18n="q4_text">Invoice, packing list, certificate of origin and phytosanitary documentation are coordinated as applicable.</p>
+          </article>
+        </div>
+        <div class="story-rail" aria-hidden="true">
+          <span class="story-rail-fill"></span>
+          <i>01</i><i>02</i><i>03</i><i>04</i>
+        </div>
+        <a class="story-cta" href="#products">
+          <span data-i18n="nav_products">Products</span>
+          <b aria-hidden="true">↓</b>
+        </a>
       </div>
     </div>
   </section>
@@ -194,7 +231,7 @@
   <section id="compliance" class="section section-dark">
     <div class="container compliance-grid">
       <div><span class="section-kicker light" data-i18n="cred_kicker">Company credentials</span><h2 data-i18n="cred_title">Registered import-export activity in Madagascar</h2><p data-i18n="cred_p1">Challenge Food SARL is registered in Madagascar. The company's registered activity includes import-export operations and the export of plant products, expressly including vanilla.</p><p class="legal-note"><span data-i18n="rcs_label">RCS Antananarivo:</span> <strong>2022 B 00157</strong>. <span data-i18n="cred_p2">Official company documents can be provided directly to qualified buyers for supplier due diligence.</span></p></div>
-      <div class="credential-card"><div class="credential-badge">CF</div><h3 data-i18n="package_title">Supplier qualification package</h3><ul><li data-i18n="package_li1">Company registration information</li><li data-i18n="package_li2">Registered activity documents</li><li data-i18n="package_li3">Lot specifications / COA where applicable</li><li data-i18n="package_li4">Organic / Fairtrade certificates for eligible lots</li><li data-i18n="package_li5">Export and shipment documents</li></ul><a class="btn btn-light" href="#requests" data-open-tab="info" data-i18n="package_btn">Request company documents</a></div>
+      <div class="credential-card"><div class="credential-badge">CF</div><h3 data-i18n="package_title">Supplier qualification package</h3><ul><li data-i18n="package_li1">Company registration information</li><li data-i18n="package_li2">Registered activity documents</li><li data-i18n="package_li3">Lot specifications / COA where applicable</li><li data-i18n="package_li4">Organic / Fairtrade certificates for eligible lots</li><li data-i18n="package_li5">Export and shipment documents</li></ul><a class="btn btn-light magnetic" href="#requests" data-open-tab="info" data-i18n="package_btn">Request company documents</a></div>
     </div>
   </section>
 
@@ -232,7 +269,7 @@
             <label><span data-i18n="f_incoterm">Preferred Incoterm</span><select name="Incoterm"><option>FOB</option><option>CIF</option><option>CIP</option><option>CFR</option><option>EXW</option><option data-i18n="opt_discuss">To discuss</option></select></label>
             <label class="full-row"><span data-i18n="f_specs">Required specifications</span><textarea name="Required specifications" rows="4" data-i18n-placeholder="ph_specs" placeholder="Length, moisture, vanillin, certification, concentration/fold, packing, etc."></textarea></label>
             <label class="full-row"><span data-i18n="f_message">Additional message</span><textarea name="Message" rows="4"></textarea></label>
-            <div class="full-row form-foot"><p data-i18n="form_service_note">After deployment, this form sends the enquiry through a secure form relay to the commercial address. The first FormSubmit use may require a one-time activation confirmation at the receiving address.</p><button class="btn btn-primary" type="submit" data-i18n="submit_quote">Send commercial request</button></div>
+            <div class="full-row form-foot"><p data-i18n="form_service_note">After deployment, this form sends the enquiry through a secure form relay to the commercial address. The first FormSubmit use may require a one-time activation confirmation at the receiving address.</p><button class="btn btn-primary magnetic" type="submit" data-i18n="submit_quote">Send commercial request</button></div>
             <div class="form-status full-row" aria-live="polite"></div>
           </form>
         </div>
@@ -247,7 +284,7 @@
             <label><span data-i18n="f_country">Country *</span><input name="Country" required autocomplete="country-name"></label>
             <label class="full-row"><span data-i18n="f_subject">Subject *</span><input name="Subject" required></label>
             <label class="full-row"><span data-i18n="f_message_req">Your question *</span><textarea name="Message" rows="7" required></textarea></label>
-            <div class="full-row form-foot"><p data-i18n="info_alias_note">Create the info@cfood.store alias before activating this form in production.</p><button class="btn btn-primary" type="submit" data-i18n="submit_info">Send information request</button></div>
+            <div class="full-row form-foot"><p data-i18n="info_alias_note">Create the info@cfood.store alias before activating this form in production.</p><button class="btn btn-primary magnetic" type="submit" data-i18n="submit_info">Send information request</button></div>
             <div class="form-status full-row" aria-live="polite"></div>
           </form>
         </div>
@@ -268,6 +305,9 @@
   <span data-i18n="nav_quote">Order / Quote</span>
 </a>
 <script src="script.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
 <script src="experience.js" defer></script>
 </body>
 </html>
