@@ -13,12 +13,16 @@
   <meta property="og:image" content="https://cfood.store/assets/og-image.jpg">
   <link rel="canonical" href="https://cfood.store/">
   <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="preload" as="image" href="assets/hero-beans.webp">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="experience.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"Challenge Food SARL","url":"https://cfood.store/","email":"commercial.export@cfood.store","telephone":"+261322549937","address":{"@type":"PostalAddress","addressLocality":"Antananarivo","addressCountry":"MG"},"description":"Madagascar-registered import-export company supplying Bourbon vanilla to professional buyers."}
   </script>
 </head>
 <body>
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
+<div class="site-grain" aria-hidden="true"></div>
 <header class="site-header" id="top">
   <div class="container nav-wrap">
     <a class="brand" href="#top" aria-label="Challenge Food home"><img src="assets/logo.png" alt="Challenge Food Export logo" width="178" height="90"></a>
@@ -58,6 +62,23 @@
     </div>
   </section>
 
+  <section class="experience-marquee" aria-label="Vanilla range">
+    <div class="marquee-track">
+      <span data-i18n="grade_a">Grade A / Gourmet</span><i>✦</i>
+      <span data-i18n="grade_b">Grade B / Extraction</span><i>✦</i>
+      <span data-i18n="sp_org_title">Organic / NOP</span><i>✦</i>
+      <span data-i18n="sp_ft_title">Fairtrade</span><i>✦</i>
+      <span data-i18n="sp_extract_title">Extract / Essence</span><i>✦</i>
+      <span data-i18n="sp_oleo_title">Oleoresin / Concentrates</span><i>✦</i>
+      <span data-i18n="grade_a">Grade A / Gourmet</span><i>✦</i>
+      <span data-i18n="grade_b">Grade B / Extraction</span><i>✦</i>
+      <span data-i18n="sp_org_title">Organic / NOP</span><i>✦</i>
+      <span data-i18n="sp_ft_title">Fairtrade</span><i>✦</i>
+      <span data-i18n="sp_extract_title">Extract / Essence</span><i>✦</i>
+      <span data-i18n="sp_oleo_title">Oleoresin / Concentrates</span><i>✦</i>
+    </div>
+  </section>
+
   <section class="trust-strip">
     <div class="container trust-grid">
       <div><span class="trust-icon">01</span><p><strong data-i18n="trust_registered">Registered company</strong><br><span data-i18n="trust_registered_text">Challenge Food SARL · Madagascar</span></p></div>
@@ -81,6 +102,34 @@
         </ul>
       </div>
       <figure class="media-card tall"><img src="assets/green-vine.webp" alt="Green vanilla pods growing on the vine in Madagascar" loading="lazy"><figcaption data-i18n="farm_caption">Vanilla at origin in Madagascar.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="journey section" aria-labelledby="journey-title">
+    <div class="container journey-shell">
+      <div class="journey-copy reveal">
+        <span class="section-kicker" data-i18n="quality_kicker">Origin, preparation & quality</span>
+        <h2 id="journey-title" data-i18n="quality_title">From green pods to prepared export lots</h2>
+        <p data-i18n="company_p2">Our objective is a clear supplier relationship: identified origin, agreed specifications, documented lots and coordinated export paperwork.</p>
+        <a class="journey-link" href="#quality"><span data-i18n="nav_quality">Quality</span><b aria-hidden="true">↘</b></a>
+      </div>
+      <div class="journey-stack" aria-label="Vanilla journey">
+        <figure class="journey-card journey-card-a" data-depth="0.035">
+          <span class="journey-index">01</span>
+          <img src="assets/green-vine.webp" alt="Vanilla pods growing on the vine in Madagascar" loading="lazy">
+          <figcaption data-i18n="gallery_1">Green vanilla at harvest stage</figcaption>
+        </figure>
+        <figure class="journey-card journey-card-b" data-depth="0.06">
+          <span class="journey-index">02</span>
+          <img src="assets/green-basket.webp" alt="Harvested green vanilla pods in Madagascar" loading="lazy">
+          <figcaption data-i18n="gallery_2">Harvested green vanilla</figcaption>
+        </figure>
+        <figure class="journey-card journey-card-c" data-depth="0.085">
+          <span class="journey-index">03</span>
+          <img src="assets/hero-beans.webp" alt="Prepared Madagascar Bourbon vanilla beans" loading="lazy">
+          <figcaption data-i18n="gallery_3">Prepared and sorted vanilla beans</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -214,6 +263,11 @@
     <div class="footer-bottom">© <span id="year"></span> Challenge Food SARL. <span data-i18n="rights">All rights reserved.</span></div>
   </div>
 </footer>
+<a class="floating-rfq" href="#requests" data-open-tab="quote" aria-label="Request a quotation">
+  <span class="floating-rfq-dot" aria-hidden="true"></span>
+  <span data-i18n="nav_quote">Order / Quote</span>
+</a>
 <script src="script.js" defer></script>
+<script src="experience.js" defer></script>
 </body>
 </html>
