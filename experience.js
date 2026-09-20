@@ -7,8 +7,242 @@ document.documentElement.classList.add('js');
   const progress = document.querySelector('.scroll-progress span');
   const floating = document.querySelector('.floating-rfq');
   const requests = document.getElementById('requests');
+  const soundToggle = document.querySelector('.sound-toggle');
   const gsapReady = Boolean(window.gsap && window.ScrollTrigger);
 
+  /* ---------------------------------------------------------
+     Ambient interaction soundscape — Web Audio only.
+     No audio file is downloaded; sounds are synthesized locally.
+     Browsers only allow sound after a real user interaction.
+  --------------------------------------------------------- */
+  let soundEnabled = true;
+  try {
+    const savedSound = localStorage.getItem('cfood-sound');
+    if (savedSound === 'off') soundEnabled = false;
+  } catch (e) {}
+
+  let audioContext = null;
+  let noiseBuffer = null;
+  let interactionArmed = false;
+  let lastTransitionAt = 0;
+  let lastSwipeAt = 0;
+
+  function updateSoundToggle() {
+    if (!soundToggle) return;
+    soundToggle.setAttribute('aria-pressed', String(soundEnabled));
+    soundToggle.setAttribute('aria-label', soundEnabled ? 'Sound on' : 'Sound off');
+    soundToggle.setAttribute('title', soundEnabled ? 'Sound on' : 'Sound off');
+    soundToggle.classList.toggle('is-armed', soundEnabled && interactionArmed);
+  }
+
+  function getAudioContext() {
+    const AudioCtor = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtor || !soundEnabled || !interactionArmed) return null;
+    if (!audioContext) {
+      audioContext = new AudioCtor();
+      noiseBuffer = audioContext.createBuffer(1, Math.round(audioContext.sampleRate * 1.15), audioContext.sampleRate);
+      const data = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < data.length; i++) {
+        const fade = 1 - (i / data.length);
+        data[i] = (Math.random() * 2 - 1) * (.72 + fade * .28);
+      }
+    }
+    return audioContext;
+  }
+
+  function withAudio(callback) {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    if (ctx.state === 'suspended') {
+      ctx.resume().then(() => callback(ctx)).catch(() => {});
+    } else {
+      callback(ctx);
+    }
+  }
+
+  function playClick(strength = 1) {
+    withAudio(ctx => {
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      const filter = ctx.createBiquadFilter();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(920, now);
+      osc.frequency.exponentialRampToValueAtTime(510, now + .055);
+      filter.type = 'lowpass';
+      filter.frequency.value = 1800;
+      gain.gain.setValueAtTime(.0001, now);
+      gain.gain.exponentialRampToValueAtTime(.032 * strength, now + .006);
+      gain.gain.exponentialRampToValueAtTime(.0001, now + .075);
+      osc.connect(filter).connect(gain).connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + .08);
+    });
+  }
+
+  function playSwipe(direction = 1, intensity = 1) {
+    const nowMs = performance.now();
+    if (nowMs - lastSwipeAt < 190) return;
+    lastSwipeAt = nowMs;
+    withAudio(ctx => {
+      const now = ctx.currentTime;
+      const source = ctx.createBufferSource();
+      const filter = ctx.createBiquadFilter();
+      const gain = ctx.createGain();
+      const panner = typeof ctx.createStereoPanner === 'function' ? ctx.createStereoPanner() : null;
+
+      source.buffer = noiseBuffer;
+      source.playbackRate.setValueAtTime(direction > 0 ? 1.08 : .9, now);
+      filter.type = 'bandpass';
+      filter.Q.value = .7;
+      filter.frequency.setValueAtTime(direction > 0 ? 650 : 1600, now);
+      filter.frequency.exponentialRampToValueAtTime(direction > 0 ? 2300 : 520, now + .34);
+
+      gain.gain.setValueAtTime(.0001, now);
+      gain.gain.exponentialRampToValueAtTime(.052 * intensity, now + .07);
+      gain.gain.exponentialRampToValueAtTime(.0001, now + .42);
+
+      source.connect(filter);
+      if (panner) {
+        panner.pan.setValueAtTime(direction > 0 ? -.34 : .34, now);
+        panner.pan.linearRampToValueAtTime(direction > 0 ? .34 : -.34, now + .36);
+        filter.connect(panner).connect(gain).connect(ctx.destination);
+      } else {
+        filter.connect(gain).connect(ctx.destination);
+      }
+
+      source.start(now, .04, .48);
+      source.stop(now + .5);
+    });
+  }
+
+  function playTransition(direction = 1) {
+    const nowMs = performance.now();
+    if (nowMs - lastTransitionAt < 480) return;
+    lastTransitionAt = nowMs;
+    playSwipe(direction, .7);
+    withAudio(ctx => {
+      const now = ctx.currentTime + .11;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(direction > 0 ? 330 : 440, now);
+      osc.frequency.exponentialRampToValueAtTime(direction > 0 ? 470 : 310, now + .2);
+      gain.gain.setValueAtTime(.0001, now);
+      gain.gain.exponentialRampToValueAtTime(.018, now + .035);
+      gain.gain.exponentialRampToValueAtTime(.0001, now + .24);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + .25);
+    });
+  }
+
+  function armInteraction() {
+    interactionArmed = true;
+    updateSoundToggle();
+  }
+  document.addEventListener('pointerdown', armInteraction, { once:true, capture:true });
+  document.addEventListener('keydown', armInteraction, { once:true, capture:true });
+
+  if (soundToggle) {
+    soundToggle.addEventListener('click', event => {
+      event.preventDefault();
+      interactionArmed = true;
+      soundEnabled = !soundEnabled;
+      try { localStorage.setItem('cfood-sound', soundEnabled ? 'on' : 'off'); } catch (e) {}
+      updateSoundToggle();
+      if (soundEnabled) {
+        playClick(.8);
+        setTimeout(() => playSwipe(1, .35), 55);
+      }
+    });
+  }
+  updateSoundToggle();
+
+  // Contextual click sounds: navigation transitions differ from ordinary controls.
+  document.addEventListener('click', event => {
+    const target = event.target.closest('a, button, input[type="submit"], .tab, .product-request');
+    if (!target || target === soundToggle || target.closest('.sound-toggle')) return;
+    interactionArmed = true;
+    updateSoundToggle();
+
+    target.classList.remove('sfx-pressed');
+    void target.offsetWidth;
+    target.classList.add('sfx-pressed');
+    setTimeout(() => target.classList.remove('sfx-pressed'), 220);
+
+    const href = target.getAttribute && target.getAttribute('href');
+    if (href && href.startsWith('#') && href.length > 1) {
+      const destination = document.querySelector(href);
+      const direction = destination && destination.getBoundingClientRect().top < 0 ? -1 : 1;
+      playTransition(direction);
+    } else {
+      playClick(target.matches('.btn,.nav-cta,.product-request') ? 1 : .7);
+    }
+  }, true);
+
+  document.addEventListener('change', event => {
+    if (event.target.matches('select')) playClick(.55);
+  });
+
+  /* ---------------------------------------------------------
+     Section gating: chapters remain visually hidden until the
+     visitor physically reaches them. They hide again off-screen.
+  --------------------------------------------------------- */
+  const chapterSelector = [
+    '.trust-strip',
+    '#company',
+    '.cinematic-story',
+    '#products',
+    '#special',
+    '#quality',
+    '.photo-band',
+    '#compliance',
+    '#requests',
+    '.site-footer'
+  ].join(',');
+
+  const chapters = [...document.querySelectorAll(chapterSelector)];
+  let activeSoundChapter = null;
+  let previousChapterTop = 0;
+
+  chapters.forEach(chapter => {
+    const rect = chapter.getBoundingClientRect();
+    if (rect.top < window.innerHeight * .98 && rect.bottom > 0) chapter.classList.add('section-active');
+    chapter.classList.add('section-gated');
+  });
+
+  if ('IntersectionObserver' in window) {
+    const chapterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const chapter = entry.target;
+        if (entry.isIntersecting) {
+          chapter.classList.add('section-active');
+          chapter.classList.remove('section-leaving');
+
+          if (entry.intersectionRatio >= .18 && chapter !== activeSoundChapter) {
+            const top = chapter.getBoundingClientRect().top;
+            const direction = top >= previousChapterTop ? 1 : -1;
+            previousChapterTop = top;
+            activeSoundChapter = chapter;
+            playTransition(direction);
+          }
+        } else {
+          chapter.classList.remove('section-active');
+          chapter.classList.remove('section-leaving');
+          if (chapter === activeSoundChapter) activeSoundChapter = null;
+        }
+      });
+    }, {
+      threshold:[0,.04,.18,.4,.7],
+      rootMargin:'7% 0px 7% 0px'
+    });
+    chapters.forEach(chapter => chapterObserver.observe(chapter));
+  } else {
+    chapters.forEach(chapter => chapter.classList.add('section-active'));
+  }
+
+  /* Basic chrome + floating RFQ behavior */
   function updateChrome() {
     const y = window.scrollY || document.documentElement.scrollTop || 0;
     const max = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
@@ -85,7 +319,7 @@ document.documentElement.classList.add('js');
     }
   }
 
-  // Hero entrance: editorial, restrained and fast enough to preserve perceived performance.
+  // Hero entrance.
   const heroTl = gsap.timeline({ defaults:{ ease:'power3.out' } });
   heroTl
     .from('.hero .eyebrow', { autoAlpha:0, y:18, duration:.55 })
@@ -135,9 +369,9 @@ document.documentElement.classList.add('js');
     }
   });
 
-  // Editorial reveal system.
+  // Editorial reveal system inside each newly visible chapter.
   const revealTargets = gsap.utils.toArray(
-    '.section-heading, #company .copy-block, #company .media-card, .standard-card, .special-card, .quality-points article, .credential-card'
+    '.section-heading, #company .copy-block, #company .media-card, .special-card, .quality-points article, .credential-card'
   );
   revealTargets.forEach((el, index) => {
     gsap.from(el, {
@@ -154,7 +388,6 @@ document.documentElement.classList.add('js');
     });
   });
 
-  // Company image gets a slow editorial crop.
   gsap.fromTo('#company .media-card img',
     { scale:1.12, yPercent:-3 },
     {
@@ -170,7 +403,7 @@ document.documentElement.classList.add('js');
     }
   );
 
-  // Pinned story: origin → harvest → preparation → export.
+  // Pinned story: origin → harvest → preparation → export, with swipe SFX per image.
   const mm = gsap.matchMedia();
   mm.add('(min-width: 1001px)', () => {
     const frames = gsap.utils.toArray('.story-frame');
@@ -183,20 +416,30 @@ document.documentElement.classList.add('js');
     gsap.set(steps[0], { autoAlpha:1, y:0 });
     gsap.set('.story-rail-fill', { scaleX:.25 });
 
+    let storySceneIndex = 0;
+    const storyDistance = () => Math.round(window.innerHeight * 4.1);
+
     const story = gsap.timeline({
       defaults:{ ease:'none' },
       scrollTrigger:{
         trigger:'.cinematic-story',
         start:'top top',
-        end:() => '+=' + Math.round(window.innerHeight * 4.1),
+        end:() => '+=' + storyDistance(),
         scrub:1.05,
         pin:'.story-pin',
         anticipatePin:1,
-        invalidateOnRefresh:true
+        invalidateOnRefresh:true,
+        onUpdate:self => {
+          const nextIndex = Math.min(3, Math.floor(self.progress * 4));
+          if (nextIndex !== storySceneIndex) {
+            const direction = nextIndex > storySceneIndex ? 1 : -1;
+            storySceneIndex = nextIndex;
+            playSwipe(direction, .9);
+          }
+        }
       }
     });
 
-    // Slow camera movement throughout each scene.
     story.to(frames[0].querySelector('img'), {
       scale:1.14,
       xPercent:-2.2,
@@ -250,7 +493,7 @@ document.documentElement.classList.add('js');
       scrollTrigger:{
         trigger:'.cinematic-story',
         start:'top top',
-        end:() => '+=' + Math.round(window.innerHeight * 4.1),
+        end:() => '+=' + storyDistance(),
         scrub:1.2
       }
     });
@@ -261,7 +504,7 @@ document.documentElement.classList.add('js');
     };
   });
 
-  // Products enter from opposite directions, keeping the page from feeling template-like.
+  // Products enter from opposite directions.
   const productCards = gsap.utils.toArray('.standard-card');
   productCards.forEach((card, i) => {
     gsap.from(card, {
@@ -278,7 +521,6 @@ document.documentElement.classList.add('js');
     });
   });
 
-  // Full-width origin image has a cinematic crop shift.
   gsap.fromTo('.photo-band img',
     { scale:1.13, yPercent:-6 },
     {
@@ -306,7 +548,7 @@ document.documentElement.classList.add('js');
     }
   });
 
-  // Subtle depth on high-value cards.
+  // Subtle pointer depth and magnetic buttons.
   if (finePointer) {
     document.querySelectorAll('.standard-card, .credential-card').forEach(card => {
       gsap.set(card, { transformPerspective:1000, transformStyle:'preserve-3d' });
@@ -327,7 +569,6 @@ document.documentElement.classList.add('js');
       });
     });
 
-    // Magnetic CTAs: small movement only, so buttons remain easy to target.
     document.querySelectorAll('.magnetic').forEach(button => {
       const qx = gsap.quickTo(button, 'x', { duration:.35, ease:'power3.out' });
       const qy = gsap.quickTo(button, 'y', { duration:.35, ease:'power3.out' });
@@ -342,7 +583,6 @@ document.documentElement.classList.add('js');
     });
   }
 
-  // Recalculate pinned distances after fonts, images or language changes.
   window.addEventListener('load', () => ScrollTrigger.refresh(), { once:true });
   document.getElementById('language-select')?.addEventListener('change', () => {
     setTimeout(() => ScrollTrigger.refresh(), 80);
