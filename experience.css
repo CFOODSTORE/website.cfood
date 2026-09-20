@@ -122,8 +122,8 @@ body{overflow-x:hidden;background:#fbfaf6}
 .floating-rfq.is-hidden{opacity:0;pointer-events:none;transform:translateY(12px)}
 .floating-rfq-dot{width:9px;height:9px;border-radius:50%;background:#39a76d;box-shadow:0 0 0 5px rgba(57,167,109,.14);animation:pulseDot 2s ease-out infinite}
 
-html.js .reveal-ready{opacity:0;transform:translateY(36px);transition:opacity .8s var(--exp-ease),transform .8s var(--exp-ease)}
-html.js .reveal-ready.is-visible{opacity:1;transform:none}
+html.js .reveal-ready{opacity:0;translate:0 36px;transition:opacity .8s var(--exp-ease),translate .8s var(--exp-ease)}
+html.js .reveal-ready.is-visible{opacity:1;translate:0 0}
 html.js .reveal-ready:nth-child(2){transition-delay:.07s}
 html.js .reveal-ready:nth-child(3){transition-delay:.14s}
 
@@ -167,4 +167,5 @@ html.js .reveal-ready:nth-child(3){transition-delay:.14s}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
   .hero{background-position:center 44%!important}
   .journey-card,.photo-band img{transform:none!important}
+  html.js .reveal-ready,html.js .reveal-ready.is-visible{translate:none!important}
 }
