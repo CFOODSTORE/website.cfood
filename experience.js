@@ -39,7 +39,7 @@ document.documentElement.classList.add('js');
 
   function fallbackReveal() {
     const targets = document.querySelectorAll(
-      '.section-heading, #company .copy-block, #company .media-card, .standard-card, .special-card, .quality-points article, .credential-card'
+      '.section-heading, #company .copy-block, #company .media-card, .special-card, .quality-points article, .credential-card'
     );
     targets.forEach(el => el.classList.add('reveal-ready'));
     if (!('IntersectionObserver' in window)) {
