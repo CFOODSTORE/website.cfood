@@ -186,6 +186,142 @@ document.documentElement.classList.add('js');
   });
 
   /* ---------------------------------------------------------
+     Welcome mini-film + page wipes
+  --------------------------------------------------------- */
+  const loader = document.querySelector('.site-loader');
+  const introFilm = document.querySelector('.intro-film');
+  const introSkip = document.querySelector('.intro-skip');
+  const introFrames = [...document.querySelectorAll('.intro-film-frame')];
+  const introBrand = document.querySelector('.intro-film-brand');
+  const introProgress = document.querySelector('.intro-film-progress span');
+  const pageWipe = document.querySelector('.page-wipe');
+  let introTimeline = null;
+  let introFinished = false;
+
+  function markIntroSeen() {
+    try { sessionStorage.setItem('cfood-intro-seen', '1'); } catch (e) {}
+  }
+
+  function introWasSeen() {
+    try { return sessionStorage.getItem('cfood-intro-seen') === '1'; } catch (e) { return false; }
+  }
+
+  function finishIntro(immediate = false) {
+    if (introFinished) return;
+    introFinished = true;
+    markIntroSeen();
+    document.documentElement.classList.remove('intro-lock');
+    if (introTimeline) introTimeline.kill();
+    if (!introFilm) return;
+    if (window.gsap && !immediate) {
+      window.gsap.to(introFilm, {
+        autoAlpha:0,
+        duration:.55,
+        ease:'power2.inOut',
+        onComplete:() => introFilm.classList.remove('is-running')
+      });
+    } else {
+      introFilm.classList.remove('is-running');
+      introFilm.style.opacity='0';
+      introFilm.style.visibility='hidden';
+    }
+  }
+
+  function runIntroFilm() {
+    if (!introFilm || reduceMotion || introWasSeen()) {
+      finishIntro(true);
+      return;
+    }
+
+    document.documentElement.classList.add('intro-lock');
+    introFilm.classList.add('is-running');
+
+    if (!window.gsap || introFrames.length < 3) {
+      setTimeout(() => finishIntro(false), 2400);
+      return;
+    }
+
+    const g = window.gsap;
+    g.set(introFrames, {autoAlpha:0});
+    g.set(introFrames[0], {autoAlpha:1});
+    g.set('.intro-film-copy > *', {autoAlpha:0, y:28});
+    g.set(introBrand, {autoAlpha:0, scale:.96});
+    g.set(introProgress, {scaleX:0});
+
+    introTimeline = g.timeline({
+      defaults:{ease:'power3.out'},
+      onComplete:() => finishIntro(false)
+    });
+
+    introTimeline
+      .to(introProgress, {scaleX:1, duration:5.2, ease:'none'}, 0)
+      .fromTo(introFrames[0].querySelector('img'), {scale:1.12}, {scale:1.03, duration:1.65, ease:'none'}, 0)
+      .to(introFrames[0].querySelectorAll('.intro-film-copy > *'), {autoAlpha:1, y:0, stagger:.09, duration:.5}, .18)
+      .to(introFrames[0], {autoAlpha:0, duration:.35}, 1.35)
+      .fromTo(introFrames[1], {autoAlpha:0}, {autoAlpha:1, duration:.4}, 1.3)
+      .fromTo(introFrames[1].querySelector('img'), {scale:1.13, xPercent:2}, {scale:1.03, xPercent:-1, duration:1.55, ease:'none'}, 1.3)
+      .to(introFrames[1].querySelectorAll('.intro-film-copy > *'), {autoAlpha:1, y:0, stagger:.09, duration:.5}, 1.46)
+      .add(() => playSwipe(1,.45), 1.38)
+      .to(introFrames[1], {autoAlpha:0, duration:.35}, 2.75)
+      .fromTo(introFrames[2], {autoAlpha:0}, {autoAlpha:1, duration:.4}, 2.7)
+      .fromTo(introFrames[2].querySelector('img'), {scale:1.13, xPercent:-2}, {scale:1.03, xPercent:1, duration:1.5, ease:'none'}, 2.7)
+      .to(introFrames[2].querySelectorAll('.intro-film-copy > *'), {autoAlpha:1, y:0, stagger:.09, duration:.5}, 2.86)
+      .add(() => playSwipe(1,.45), 2.78)
+      .to(introFrames[2], {autoAlpha:.25, duration:.45}, 4.0)
+      .to(introBrand, {autoAlpha:1, scale:1, duration:.65}, 4.0)
+      .add(() => playTransition(1), 4.05)
+      .to({}, {duration:.55});
+  }
+
+  if (introSkip) {
+    introSkip.addEventListener('click', () => finishIntro(false));
+  }
+
+  let loaderReleased = false;
+  function releaseLoader() {
+    if (loaderReleased) return;
+    loaderReleased = true;
+    if (loader) loader.classList.add('is-done');
+    setTimeout(runIntroFilm, 260);
+  }
+
+  if (document.readyState === 'complete') {
+    setTimeout(releaseLoader, 260);
+  } else {
+    window.addEventListener('load', () => setTimeout(releaseLoader, 240), {once:true});
+    setTimeout(releaseLoader, 1500);
+  }
+
+  // Animated wipe on internal navigation: creates a slideshow/page-change feel.
+  document.addEventListener('click', event => {
+    const anchor = event.target.closest('a[href^="#"]');
+    if (!anchor || !pageWipe) return;
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#' || href === '#top') return;
+    const destination = document.querySelector(href);
+    if (!destination) return;
+
+    event.preventDefault();
+    const direction = destination.getBoundingClientRect().top < 0 ? -1 : 1;
+    playTransition(direction);
+
+    if (window.gsap && !reduceMotion) {
+      const g = window.gsap;
+      g.killTweensOf(pageWipe);
+      g.set(pageWipe, {yPercent:direction > 0 ? 105 : -105});
+      g.timeline()
+        .to(pageWipe, {yPercent:0, duration:.34, ease:'power3.inOut'})
+        .add(() => {
+          const top = destination.getBoundingClientRect().top + window.scrollY - (header?.offsetHeight || 0);
+          window.scrollTo({top, behavior:'auto'});
+        })
+        .to(pageWipe, {yPercent:direction > 0 ? -105 : 105, duration:.42, ease:'power3.inOut', delay:.08});
+    } else {
+      destination.scrollIntoView({behavior:reduceMotion ? 'auto' : 'smooth', block:'start'});
+    }
+  }, false);
+
+  /* ---------------------------------------------------------
      Section gating: chapters remain visually hidden until the
      visitor physically reaches them. They hide again off-screen.
   --------------------------------------------------------- */
