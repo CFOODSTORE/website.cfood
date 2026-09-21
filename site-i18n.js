@@ -3,8 +3,8 @@
 
   const EXTRA = {
     en:{
-      nav:['Home','Company','Origin','RSE','Shop','Quality','Credentials','Contact / Quote'],
-      page:['Home','Company','Origin','RSE','Shop','Quality','Credentials','Contact / Quote'],
+      nav:['Home','Company','Origin','RSE','Resources','Shop','Quality','Credentials','Contact / Quote'],
+      page:['Home','Company','Origin','RSE','Resources','Shop','Quality','Credentials','Contact / Quote'],
       storyKicker:'Sambava · Madagascar Bourbon Vanilla',
       storyTitle:'From Sambava farms to international buyers',
       story:[
@@ -46,8 +46,8 @@
       sound:'Sound'
     },
     fr:{
-      nav:['Accueil','Société','Origine','RSE','Boutique','Qualité','Références','Contact / Devis'],
-      page:['Accueil','Société','Origine','RSE','Boutique','Qualité','Références','Contact / Devis'],
+      nav:['Accueil','Société','Origine','RSE','Ressources','Boutique','Qualité','Références','Contact / Devis'],
+      page:['Accueil','Société','Origine','RSE','Ressources','Boutique','Qualité','Références','Contact / Devis'],
       storyKicker:'Sambava · Vanille Bourbon de Madagascar',
       storyTitle:'Des producteurs de Sambava aux acheteurs internationaux',
       story:[
@@ -89,8 +89,8 @@
       sound:'Son'
     },
     tr:{
-      nav:['Ana Sayfa','Şirket','Menşe','RSE','Mağaza','Kalite','Belgeler','İletişim / Teklif'],
-      page:['Ana Sayfa','Şirket','Menşe','RSE','Mağaza','Kalite','Belgeler','İletişim / Teklif'],
+      nav:['Ana Sayfa','Şirket','Menşe','RSE','Kaynaklar','Mağaza','Kalite','Belgeler','İletişim / Teklif'],
+      page:['Ana Sayfa','Şirket','Menşe','RSE','Kaynaklar','Mağaza','Kalite','Belgeler','İletişim / Teklif'],
       storyKicker:'Sambava · Madagaskar Bourbon Vanilyası',
       storyTitle:'Sambava çiftliklerinden uluslararası alıcılara',
       story:[
@@ -132,8 +132,8 @@
       sound:'Ses'
     },
     ru:{
-      nav:['Главная','Компания','Происхождение','RSE','Магазин','Качество','Документы','Контакт / Запрос'],
-      page:['Главная','Компания','Происхождение','RSE','Магазин','Качество','Документы','Контакт / Запрос'],
+      nav:['Главная','Компания','Происхождение','RSE','Ресурсы','Магазин','Качество','Документы','Контакт / Запрос'],
+      page:['Главная','Компания','Происхождение','RSE','Ресурсы','Магазин','Качество','Документы','Контакт / Запрос'],
       storyKicker:'Самбава · Бурбонская ваниль Мадагаскара',
       storyTitle:'От ферм Самбавы до международных покупателей',
       story:[
@@ -175,8 +175,8 @@
       sound:'Звук'
     },
     zh:{
-      nav:['首页','公司','产地','RSE','商店','质量','资质','联系 / 询价'],
-      page:['首页','公司','产地','RSE','商店','质量','资质','联系 / 询价'],
+      nav:['首页','公司','产地','RSE','买家资源','商店','质量','资质','联系 / 询价'],
+      page:['首页','公司','产地','RSE','买家资源','商店','质量','资质','联系 / 询价'],
       storyKicker:'桑巴瓦 · 马达加斯加波旁香草',
       storyTitle:'从桑巴瓦农场到国际买家',
       story:[
@@ -218,8 +218,8 @@
       sound:'声音'
     },
     ar:{
-      nav:['الرئيسية','الشركة','المنشأ','RSE','المتجر','الجودة','الوثائق','اتصال / عرض سعر'],
-      page:['الرئيسية','الشركة','المنشأ','RSE','المتجر','الجودة','الوثائق','اتصال / عرض سعر'],
+      nav:['الرئيسية','الشركة','المنشأ','RSE','موارد المشترين','المتجر','الجودة','الوثائق','اتصال / عرض سعر'],
+      page:['الرئيسية','الشركة','المنشأ','RSE','موارد المشترين','المتجر','الجودة','الوثائق','اتصال / عرض سعر'],
       storyKicker:'سامبافا · فانيليا بوربون من مدغشقر',
       storyTitle:'من مزارع سامبافا إلى المشترين الدوليين',
       story:[
@@ -269,6 +269,15 @@
     ru:{kicker:'Социальная и территориальная ответственность',title:'Развиваемся вместе с Амбухимицинжу, Самбава',lead:'Challenge Food развивает ответственную закупочную модель с квалифицированными производителями, которые проходят обучение и получают сопровождение в коммуне Амбухимицинжу, Самбава, Мадагаскар.',p1t:'Поддержка производителей',p1d:'Обучение, техническое сопровождение, качество и практики, соответствующие требованиям рынка.',p2t:'Местное образование',p2d:'Поддержка развития территории, включая создание и поддержку местных школ.',p3t:'Динамическая агролесомелиорация',p3d:'Лесовосстановление, мониторинг посадок и сопровождение ванильных участков в агролесоводческой системе.',impactKicker:'Действия на территории',impactTitle:'Цепочка поставок, которая также способствует местному развитию',eduTitle:'Образование и сообщества',eduText:'Инвестиции в будущее детей и укрепление полезной инфраструктуры для местных сообществ.',schoolTitle:'Местные школы',schoolText:'Конкретные действия рядом с семьями и деревнями в зоне закупок.',communityTitle:'Развитие территории',communityText:'Подход, объединяющий экономическую деятельность, социальную поддержку и местные перспективы.',treeTitle:'Мониторинг лесовосстановления',treeText:'Посадки отслеживаются во времени для повышения приживаемости и экологического эффекта.',agroTitle:'Агролесоводство на ванильных участках',agroText:'Поддержка восстановления растительности и управления участками для лучшей интеграции производства в ландшафт.'},
     zh:{kicker:'社会与区域责任',title:'与安布希米钦朱和桑巴瓦共同发展',lead:'Challenge Food 在马达加斯加桑巴瓦的安布希米钦朱市与经过培训、指导并符合要求的生产者建立负责任的采购关系。',p1t:'生产者培训与支持',p1d:'提供培训、技术支持、质量提升以及符合市场要求的实践指导。',p2t:'当地教育',p2d:'支持采购区的发展，包括建设和支持当地学校。',p3t:'动态农林复合系统',p3d:'开展植树造林、持续监测种植成果，并以农林复合方式支持香草地块。',impactKicker:'区域行动',impactTitle:'让供应链同时促进当地发展',eduTitle:'教育与社区',eduText:'投资儿童未来，并加强对当地社区有用的基础设施。',schoolTitle:'当地学校',schoolText:'在采购区家庭和村庄附近开展具体行动。',communityTitle:'区域发展',communityText:'将经济活动、社会支持和本地发展机会结合起来。',treeTitle:'持续跟踪的植树造林',treeText:'对种植进行持续监测，以提高成活和生态贡献。',agroTitle:'香草地块农林复合经营',agroText:'支持植被恢复和地块管理，使生产更好地融入当地景观。'},
     ar:{kicker:'المسؤولية الاجتماعية والإقليمية',title:'النمو مع أمبوهيميتسينجو، سامبافا',lead:'تطوّر Challenge Food علاقات شراء مسؤولة مع منتجين مؤهلين ومدرَّبين ومواكبين في بلدية أمبوهيميتسينجو، سامبافا، مدغشقر.',p1t:'دعم المنتجين',p1d:'التدريب والمواكبة التقنية وتحسين الجودة والممارسات الملائمة لمتطلبات السوق.',p2t:'التعليم المحلي',p2d:'دعم تنمية المنطقة، بما في ذلك إنشاء ودعم المدارس المحلية.',p3t:'الحراجة الزراعية الديناميكية',p3d:'إعادة التشجير ومتابعة الغرسات ومواكبة حقول الفانيليا ضمن نهج الحراجة الزراعية.',impactKicker:'أنشطة في المنطقة',impactTitle:'سلسلة توريد تساهم أيضاً في التنمية المحلية',eduTitle:'التعليم والمجتمعات',eduText:'الاستثمار في مستقبل الأطفال وتعزيز البنية التحتية المفيدة للمجتمعات المحلية.',schoolTitle:'المدارس المحلية',schoolText:'أنشطة ملموسة بالقرب من الأسر والقرى في منطقة التوريد.',communityTitle:'تنمية المنطقة',communityText:'نهج يجمع النشاط الاقتصادي والدعم الاجتماعي والفرص المحلية.',treeTitle:'إعادة تشجير مع المتابعة',treeText:'تتم متابعة الغرسات مع مرور الوقت لتعزيز نجاحها ومساهمتها البيئية.',agroTitle:'الحراجة الزراعية لحقول الفانيليا',agroText:'دعم استعادة الغطاء النباتي وإدارة الحقول من أجل إنتاج أكثر اندماجاً في المشهد الطبيعي.'}
+  };
+
+  const RESOURCE_TEXT = {
+    en:{kicker:'Resources for professional buyers',title:'Documents, supplier verification and commercial information',intro:'Find the resources needed to qualify Challenge Food, understand our vanilla offer and prepare a professional enquiry.',c1t:'Madagascar Vanilla',c1d:'Grades, quality, packing, pricing and export basics.',c1a:'View the range',c2t:'Supplier & Wholesale',c2d:'Professional sourcing directly from Madagascar and industrial purchasing.',c2a:'Access +25 kg purchasing',c3t:'Quality & Documents',c3d:'Lot specifications, COA, packing and shipment documentation.',c3a:'View quality',c4t:'Supplier Verification',c4d:'Information useful for professional buyer due diligence.',c4a:'Verify Challenge Food',c5t:'About Challenge Food',c5d:'Company identity, registration, export activity and contact details.',c5a:'Discover the company'},
+    fr:{kicker:'Ressources pour acheteurs professionnels',title:'Documents, vérification fournisseur et informations commerciales',intro:'Retrouvez les ressources utiles pour qualifier Challenge Food, comprendre notre offre vanille et préparer une demande professionnelle.',c1t:'Vanille de Madagascar',c1d:'Grades, qualité, conditionnement, prix et bases export.',c1a:'Voir la gamme',c2t:'Fournisseur & vente en gros',c2d:'Approvisionnement professionnel direct depuis Madagascar et achats industriels.',c2a:'Accéder aux achats +25 kg',c3t:'Qualité & documents',c3d:'Spécifications de lot, COA, conditionnement et documents d’expédition.',c3a:'Voir la qualité',c4t:'Vérification fournisseur',c4d:'Éléments utiles à la due diligence des acheteurs professionnels.',c4a:'Vérifier Challenge Food',c5t:'À propos de Challenge Food',c5d:'Identité de la société, immatriculation, activité export et coordonnées.',c5a:'Découvrir la société'},
+    tr:{kicker:'Profesyonel alıcı kaynakları',title:'Belgeler, tedarikçi doğrulama ve ticari bilgiler',intro:'Challenge Food’u değerlendirmek, vanilya teklifimizi anlamak ve profesyonel talep hazırlamak için gerekli kaynaklar.',c1t:'Madagaskar Vanilyası',c1d:'Kaliteler, kalite, ambalaj, fiyat ve ihracat temelleri.',c1a:'Ürünleri görüntüle',c2t:'Tedarikçi & Toptan',c2d:'Madagaskar’dan doğrudan profesyonel tedarik ve endüstriyel alım.',c2a:'+25 kg alıma git',c3t:'Kalite & Belgeler',c3d:'Parti özellikleri, COA, ambalaj ve sevkiyat belgeleri.',c3a:'Kaliteyi görüntüle',c4t:'Tedarikçi Doğrulama',c4d:'Profesyonel alıcı durum tespiti için gerekli bilgiler.',c4a:'Challenge Food’u doğrula',c5t:'Challenge Food Hakkında',c5d:'Şirket kimliği, kayıt, ihracat faaliyeti ve iletişim bilgileri.',c5a:'Şirketi keşfet'},
+    ru:{kicker:'Ресурсы для профессиональных покупателей',title:'Документы, проверка поставщика и коммерческая информация',intro:'Материалы для квалификации Challenge Food, понимания предложения по ванили и подготовки профессионального запроса.',c1t:'Ваниль Мадагаскара',c1d:'Сорта, качество, упаковка, цены и основы экспорта.',c1a:'Смотреть ассортимент',c2t:'Поставщик & Опт',c2d:'Профессиональные поставки напрямую с Мадагаскара и промышленные закупки.',c2a:'Закупки от 25 кг',c3t:'Качество & Документы',c3d:'Спецификации партий, COA, упаковка и отгрузочные документы.',c3a:'Смотреть качество',c4t:'Проверка поставщика',c4d:'Информация для due diligence профессиональных покупателей.',c4a:'Проверить Challenge Food',c5t:'О Challenge Food',c5d:'Данные компании, регистрация, экспортная деятельность и контакты.',c5a:'О компании'},
+    zh:{kicker:'专业买家资源',title:'文件、供应商核验与商务信息',intro:'用于审核 Challenge Food、了解香草产品并准备专业询盘的资料。',c1t:'马达加斯加香草',c1d:'等级、质量、包装、价格及出口基础信息。',c1a:'查看产品系列',c2t:'供应商与批发',c2d:'从马达加斯加直接进行专业采购和工业采购。',c2a:'进入 25 公斤以上采购',c3t:'质量与文件',c3d:'批次规格、COA、包装及运输文件。',c3a:'查看质量',c4t:'供应商核验',c4d:'专业买家尽职调查所需的信息。',c4a:'核验 Challenge Food',c5t:'关于 Challenge Food',c5d:'公司身份、注册、出口业务和联系方式。',c5a:'了解公司'},
+    ar:{kicker:'موارد للمشترين المحترفين',title:'الوثائق والتحقق من المورد والمعلومات التجارية',intro:'موارد لتأهيل Challenge Food وفهم عرض الفانيليا وإعداد طلب مهني.',c1t:'فانيليا مدغشقر',c1d:'الدرجات والجودة والتعبئة والأسعار وأساسيات التصدير.',c1a:'عرض المنتجات',c2t:'المورد والبيع بالجملة',c2d:'توريد مهني مباشر من مدغشقر ومشتريات صناعية.',c2a:'الشراء من 25 كغ',c3t:'الجودة والوثائق',c3d:'مواصفات الدفعات وCOA والتعبئة ووثائق الشحن.',c3a:'عرض الجودة',c4t:'التحقق من المورد',c4d:'معلومات مفيدة للعناية الواجبة للمشترين المحترفين.',c4a:'التحقق من Challenge Food',c5t:'حول Challenge Food',c5d:'هوية الشركة والتسجيل ونشاط التصدير وبيانات الاتصال.',c5a:'اكتشف الشركة'}
   };
 
   const $ = (s,root=document)=>root.querySelector(s);
@@ -348,7 +357,7 @@
     const pageName=$('.page-name');
     if(pageName){
       const active=$('.cf-page.page-active');
-      const ids=['home','company','vanilla-journey','rse','boutique','quality','compliance','requests'];
+      const ids=['home','company','vanilla-journey','rse','resources','boutique','quality','compliance','requests'];
       const i=ids.indexOf(active?.id); if(i>=0)pageName.textContent=d.page[i];
     }
     translateCartRows(d);
@@ -367,7 +376,7 @@
     });
 
     matches.forEach(el=>{
-      if(el.closest('#compliance,#boutique,#rse')) return;
+      if(el.closest('#compliance,#boutique,#rse,#resources')) return;
 
       let node=el;
       let candidate=null;
@@ -380,7 +389,7 @@
         if((looksFloating||cardLike) && saneSize) candidate=node;
       }
       const victim=candidate||el.closest('article,aside,[class*="card"],[class*="tile"],[class*="option"],[class*="resource"]');
-      if(victim && !victim.closest('#compliance,#boutique,#rse')){
+      if(victim && !victim.closest('#compliance,#boutique,#rse,#resources')){
         victim.remove();
       }
     });
