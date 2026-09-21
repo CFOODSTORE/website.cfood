@@ -527,30 +527,46 @@ document.documentElement.classList.add('js');
     }
   );
 
-  // Pinned story: origin → harvest → preparation → export, with swipe SFX per image.
+  // Pinned story: each chapter is a hidden full-screen page.
+  // Pages replace each other with a 3D rotation instead of exposing the next section.
   const mm = gsap.matchMedia();
   mm.add('(min-width: 1001px)', () => {
     const frames = gsap.utils.toArray('.story-frame');
     const steps = gsap.utils.toArray('.story-step');
     if (frames.length < 4 || steps.length < 4) return;
 
-    gsap.set(frames, { autoAlpha:0, scale:1.04 });
-    gsap.set(frames[0], { autoAlpha:1, scale:1 });
-    gsap.set(steps, { autoAlpha:0, y:44 });
-    gsap.set(steps[0], { autoAlpha:1, y:0 });
+    const headerHeight = () => Math.round(header?.getBoundingClientRect().height || 82);
+    const storyDistance = () => Math.round(Math.max(window.innerHeight - headerHeight(), 620) * 4.15);
+
+    gsap.set(frames, {
+      autoAlpha:0,
+      rotationY:90,
+      transformPerspective:1500,
+      transformOrigin:'50% 50%',
+      scale:1.025
+    });
+    gsap.set(frames[0], { autoAlpha:1, rotationY:0, scale:1 });
+    gsap.set(steps, {
+      autoAlpha:0,
+      rotationY:28,
+      x:44,
+      transformPerspective:1200,
+      transformOrigin:'100% 50%'
+    });
+    gsap.set(steps[0], { autoAlpha:1, rotationY:0, x:0 });
     gsap.set('.story-rail-fill', { scaleX:.25 });
 
     let storySceneIndex = 0;
-    const storyDistance = () => Math.round(window.innerHeight * 4.1);
 
     const story = gsap.timeline({
-      defaults:{ ease:'none' },
+      defaults:{ ease:'power2.inOut' },
       scrollTrigger:{
         trigger:'.cinematic-story',
-        start:'top top',
+        start:() => 'top ' + headerHeight() + 'px',
         end:() => '+=' + storyDistance(),
-        scrub:1.05,
+        scrub:.75,
         pin:'.story-pin',
+        pinSpacing:true,
         anticipatePin:1,
         invalidateOnRefresh:true,
         onUpdate:self => {
@@ -558,20 +574,20 @@ document.documentElement.classList.add('js');
           if (nextIndex !== storySceneIndex) {
             const direction = nextIndex > storySceneIndex ? 1 : -1;
             storySceneIndex = nextIndex;
-            playSwipe(direction, .9);
+            playSwipe(direction, .85);
           }
         }
       }
     });
 
     story.to(frames[0].querySelector('img'), {
-      scale:1.14,
-      xPercent:-2.2,
-      duration:1.05
+      scale:1.085,
+      duration:1.05,
+      ease:'none'
     }, 0);
 
     for (let i=1; i<frames.length; i++) {
-      const at = i * 1.1;
+      const at = i * 1.12;
       const previousFrame = frames[i-1];
       const currentFrame = frames[i];
       const previousStep = steps[i-1];
@@ -581,46 +597,37 @@ document.documentElement.classList.add('js');
       story
         .to(previousStep, {
           autoAlpha:0,
-          y:-34,
-          duration:.28,
-          ease:'power2.in'
+          rotationY:-28,
+          x:-44,
+          duration:.34
         }, at)
         .to(previousFrame, {
           autoAlpha:0,
-          scale:.98,
-          duration:.38
+          rotationY:-90,
+          scale:1.025,
+          duration:.5
         }, at)
         .fromTo(currentFrame,
-          { autoAlpha:0, scale:1.065 },
-          { autoAlpha:1, scale:1, duration:.48 },
+          { autoAlpha:0, rotationY:90, scale:1.025 },
+          { autoAlpha:1, rotationY:0, scale:1, duration:.56 },
           at+.06
         )
         .fromTo(currentStep,
-          { autoAlpha:0, y:42 },
-          { autoAlpha:1, y:0, duration:.42, ease:'power3.out' },
-          at+.12
+          { autoAlpha:0, rotationY:28, x:44 },
+          { autoAlpha:1, rotationY:0, x:0, duration:.46, ease:'power3.out' },
+          at+.16
         )
         .to('.story-rail-fill', {
           scaleX:(i+1)/frames.length,
-          duration:.45
-        }, at+.05)
+          duration:.44,
+          ease:'power2.out'
+        }, at+.08)
         .fromTo(image,
-          { scale:1.13, xPercent:i % 2 ? 2.2 : -2.2 },
-          { scale:1.03, xPercent:i % 2 ? -1.2 : 1.2, duration:1.05 },
-          at+.05
+          { scale:1.09 },
+          { scale:1.025, duration:1.05, ease:'none' },
+          at+.08
         );
     }
-
-    gsap.to('.story-watermark', {
-      xPercent:-12,
-      ease:'none',
-      scrollTrigger:{
-        trigger:'.cinematic-story',
-        start:'top top',
-        end:() => '+=' + storyDistance(),
-        scrub:1.2
-      }
-    });
 
     return () => {
       story.scrollTrigger && story.scrollTrigger.kill();
