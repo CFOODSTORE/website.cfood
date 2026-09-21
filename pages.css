@@ -183,3 +183,50 @@ body.cf-pages-ready .page-wipe{
 
 /* Elements explicitly removed from the home presentation (MG/B2B/QA/etc. option cards). */
 .cf-forced-hidden{display:none!important;visibility:hidden!important;pointer-events:none!important}
+
+
+/* FINAL PAGE ISOLATION — inactive pages cannot render or intercept clicks */
+body.cf-pages-ready main>.cf-page{
+  display:none!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:rotateY(92deg)!important;
+  z-index:0!important;
+}
+body.cf-pages-ready main>.cf-page.page-active{
+  display:block!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  transform:rotateY(0deg)!important;
+  z-index:5!important;
+}
+body.cf-pages-ready main>.cf-page.page-door-prep,
+body.cf-pages-ready main>.cf-page.page-door-prep-back,
+body.cf-pages-ready main>.cf-page.page-door-in,
+body.cf-pages-ready main>.cf-page.page-door-out,
+body.cf-pages-ready main>.cf-page.page-door-out-back{
+  display:block!important;
+  visibility:visible!important;
+  pointer-events:none!important;
+}
+body.cf-pages-ready main>.cf-page.page-door-prep,
+body.cf-pages-ready main>.cf-page.page-door-prep-back{
+  opacity:1!important;
+}
+body.cf-pages-ready main>.cf-page.page-door-in{
+  opacity:1!important;
+  transform:rotateY(0deg)!important;
+  z-index:8!important;
+}
+body.cf-pages-ready main>.cf-page.page-door-out,
+body.cf-pages-ready main>.cf-page.page-door-out-back{
+  opacity:1!important;
+  z-index:9!important;
+}
+
+/* Never show resources cards outside their own active page */
+body.cf-pages-ready #resources:not(.page-active):not(.page-door-prep):not(.page-door-prep-back):not(.page-door-in):not(.page-door-out):not(.page-door-out-back){
+  display:none!important;
+}
