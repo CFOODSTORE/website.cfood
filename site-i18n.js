@@ -264,8 +264,8 @@
 
   const $ = (s,root=document)=>root.querySelector(s);
   const $$ = (s,root=document)=>[...root.querySelectorAll(s)];
-  const set = (s,v)=>{const el=$(s);if(el&&v!==undefined)el.textContent=v;};
-  const setHTML=(s,v)=>{const el=$(s);if(el&&v!==undefined)el.innerHTML=v;};
+  const set = (s,v)=>{const el=$(s);if(el&&v!==undefined&&el.textContent!==v)el.textContent=v;};
+  const setHTML=(s,v)=>{const el=$(s);if(el&&v!==undefined&&el.innerHTML!==v)el.innerHTML=v;};
 
   function lang(){ return $('#language-select')?.value || localStorage.getItem('cfood-language') || 'en'; }
 
@@ -274,8 +274,11 @@
       const p=d.products[card.dataset.id]; if(!p)return;
       card.dataset.name=p[3];
       const badge=$('.shop-badge',card),title=$('h3',card),desc=$('p',card),price=$('.shop-price',card),btn=$('.add-cart',card);
-      if(badge)badge.textContent=p[0]; if(title)title.textContent=p[1]; if(desc)desc.textContent=p[2];
-      if(price)price.textContent=d.price; if(btn && !btn.textContent.includes('✓'))btn.textContent=d.add;
+      if(badge&&badge.textContent!==p[0])badge.textContent=p[0];
+      if(title&&title.textContent!==p[1])title.textContent=p[1];
+      if(desc&&desc.textContent!==p[2])desc.textContent=p[2];
+      if(price&&price.textContent!==d.price)price.textContent=d.price;
+      if(btn && !btn.textContent.includes('✓') && btn.textContent!==d.add)btn.textContent=d.add;
     });
     const sel=$('#industrial-product');
     if(sel){
@@ -287,9 +290,10 @@
     $$('.cart-row').forEach(row=>{
       const id=row.dataset.cartId;
       const p=d.products[id];
-      if(p){ const strong=$('strong',row); if(strong)strong.textContent=p[3]; }
-      const sm=$('small',row); if(sm)sm.textContent=d.qtyIn+' '+(row.querySelector('strong')?.textContent ? (row.dataset.unit||'') : '');
-      const rm=$('.cart-remove',row); if(rm)rm.textContent=d.remove;
+      if(p){ const strong=$('strong',row); if(strong&&strong.textContent!==p[3])strong.textContent=p[3]; }
+      const unit=id==='extract-1l'?(lang()==='fr'?'bouteille':lang()==='tr'?'şişe':lang()==='ru'?'бутылка':lang()==='zh'?'瓶':lang()==='ar'?'زجاجة':'bottle'):(id==='custom'?(lang()==='fr'?'lot':lang()==='tr'?'parti':lang()==='ru'?'партия':lang()==='zh'?'批次':lang()==='ar'?'دفعة':'lot'):'kg');
+      const sm=$('small',row); const qtxt=d.qtyIn+' '+unit; if(sm&&sm.textContent!==qtxt)sm.textContent=qtxt;
+      const rm=$('.cart-remove',row); if(rm&&rm.textContent!==d.remove)rm.textContent=d.remove;
     });
   }
 
@@ -355,11 +359,15 @@
   select?.addEventListener('change',()=>setTimeout(apply,0));
   document.addEventListener('cfood:language',apply);
 
+  let mutationTimer=null;
   const observer=new MutationObserver(()=>{
-    removeUnwantedCards();
-    const d=EXTRA[lang()]||EXTRA.en;
-    applyProducts(d);
-    translateCartRows(d);
+    clearTimeout(mutationTimer);
+    mutationTimer=setTimeout(()=>{
+      removeUnwantedCards();
+      const d=EXTRA[lang()]||EXTRA.en;
+      applyProducts(d);
+      translateCartRows(d);
+    },30);
   });
   observer.observe(document.body,{childList:true,subtree:true});
 
