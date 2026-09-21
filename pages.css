@@ -179,3 +179,7 @@ body.cf-pages-ready .intro-film,
 body.cf-pages-ready .page-wipe{
   display:none!important;
 }
+
+
+/* Elements explicitly removed from the home presentation (MG/B2B/QA/etc. option cards). */
+.cf-forced-hidden{display:none!important;visibility:hidden!important;pointer-events:none!important}
