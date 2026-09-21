@@ -1,0 +1,128 @@
+/* True separated pages for cfood.store */
+:root{--cf-header-h:88px}
+html,body{height:100%}
+body.cf-pages-ready{overflow:hidden;background:#071f15}
+body.cf-pages-ready .site-header{
+  position:fixed!important;top:0;left:0;right:0;z-index:25000;
+  height:var(--cf-header-h);background:rgba(250,248,241,.96);backdrop-filter:blur(16px)
+}
+body.cf-pages-ready main{position:fixed;inset:var(--cf-header-h) 0 0;overflow:hidden;perspective:1800px;background:#071f15}
+body.cf-pages-ready main>.cf-legacy,
+body.cf-pages-ready>.site-footer{display:none!important}
+body.cf-pages-ready main>.cf-page{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  margin:0!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:rotateY(92deg)!important;
+  transform-origin:right center!important;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  will-change:transform,opacity;
+  z-index:1;
+  transition:none!important;
+}
+body.cf-pages-ready main>.cf-page.page-active{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  transform:rotateY(0deg)!important;
+  z-index:5;
+}
+body.cf-pages-ready main>.cf-page.page-door-prep{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:none!important;
+  transform:rotateY(92deg)!important;
+  transform-origin:right center!important;
+  z-index:7;
+}
+body.cf-pages-ready main>.cf-page.page-door-prep-back{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:none!important;
+  transform:rotateY(-92deg)!important;
+  transform-origin:left center!important;
+  z-index:7;
+}
+body.cf-pages-ready main>.cf-page.page-door-in{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:none!important;
+  transform:rotateY(0deg)!important;
+  transition:transform .72s cubic-bezier(.7,.02,.22,1),opacity .18s ease!important;
+  z-index:8;
+}
+body.cf-pages-ready main>.cf-page.page-door-out{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:none!important;
+  transform:rotateY(-92deg)!important;
+  transform-origin:left center!important;
+  transition:transform .72s cubic-bezier(.7,.02,.22,1),opacity .18s ease .5s!important;
+  z-index:9;
+}
+body.cf-pages-ready main>.cf-page.page-door-out-back{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:none!important;
+  transform:rotateY(92deg)!important;
+  transform-origin:right center!important;
+  transition:transform .72s cubic-bezier(.7,.02,.22,1),opacity .18s ease .5s!important;
+  z-index:9;
+}
+
+/* hard separation: no neighboring page can bleed through */
+body.cf-pages-ready main>.cf-page:not(.page-active):not(.page-door-prep):not(.page-door-prep-back):not(.page-door-in):not(.page-door-out):not(.page-door-out-back){
+  display:block!important;
+  opacity:0!important;
+  visibility:hidden!important;
+}
+body.cf-pages-ready .scroll-progress{display:none!important}
+body.cf-pages-ready .page-wipe{display:none!important}
+body.cf-pages-ready #home{padding-top:0!important}
+body.cf-pages-ready #home .hero-content{min-height:100%;display:flex;flex-direction:column;justify-content:center;padding-top:40px;padding-bottom:48px}
+body.cf-pages-ready #company,
+body.cf-pages-ready #quality,
+body.cf-pages-ready #compliance,
+body.cf-pages-ready #requests{padding-top:clamp(56px,7vh,90px)!important;padding-bottom:70px!important}
+body.cf-pages-ready #vanilla-journey .story-pin{height:100%!important;min-height:100%!important}
+body.cf-pages-ready #boutique{padding-top:clamp(46px,6vh,76px)!important;padding-bottom:90px!important}
+body.cf-pages-ready #requests .container{padding-bottom:60px}
+body.cf-pages-ready .main-nav a.page-nav-active{color:#b3832e}
+body.cf-pages-ready .main-nav a.page-nav-active:after{transform:scaleX(1)}
+.page-switcher{
+  position:fixed;left:22px;bottom:24px;z-index:26000;display:flex;gap:8px;
+}
+.page-switcher button{
+  width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.22);
+  background:rgba(7,31,21,.78);color:#fff;backdrop-filter:blur(10px);cursor:pointer;font-size:1.05rem;
+}
+.page-switcher button:disabled{opacity:.3;cursor:default}
+.page-name{
+  position:fixed;left:76px;bottom:34px;z-index:26000;color:#fff;
+  background:rgba(7,31,21,.66);padding:7px 11px;border-radius:999px;
+  font:700 .72rem/1 Inter,system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(8px)
+}
+
+@media(max-width:900px){
+  :root{--cf-header-h:76px}
+  body.cf-pages-ready .site-header{height:var(--cf-header-h)}
+  body.cf-pages-ready main>.cf-page{transform-origin:center center!important}
+  .page-switcher{left:12px;bottom:14px}
+  .page-name{left:64px;bottom:24px}
+}
+@media(prefers-reduced-motion:reduce){
+  body.cf-pages-ready main>.cf-page,
+  body.cf-pages-ready main>.cf-page.page-door-in,
+  body.cf-pages-ready main>.cf-page.page-door-out,
+  body.cf-pages-ready main>.cf-page.page-door-out-back{transition:none!important;transform:none!important}
+}
