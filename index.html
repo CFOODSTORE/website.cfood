@@ -231,68 +231,56 @@
     <div class="container shop-head">
       <div>
         <span class="section-kicker">Boutique Challenge Food</span>
-        <h2 id="shop-title">Vanille de Madagascar, prête à commander</h2>
-        <p>Ajoutez plusieurs produits au panier, ajustez les quantités puis validez votre commande en une seule fois. Les prix export et frais de transport sont confirmés selon la destination.</p>
+        <h2 id="shop-title">Toute notre gamme vanille</h2>
+        <p>Ajoutez plusieurs produits au panier puis validez une seule demande. Les prix sont confirmés selon le lot, le conditionnement et la destination.</p>
       </div>
       <div class="shop-actions">
         <button class="shop-music" type="button" aria-pressed="false"><span>♫</span> Musique boutique</button>
+        <a class="industrial-shortcut" href="#industrial-buy">Grands achats +25 kg</a>
         <button class="cart-open" type="button" aria-label="Ouvrir le panier">Panier <strong class="cart-count">0</strong></button>
       </div>
     </div>
 
-    <div class="container shop-grid">
-      <article class="shop-card shop-card-extract" data-id="extract-1l" data-name="Extrait de vanille de Madagascar 1L" data-unit="bouteille">
-        <div class="shop-visual extract-visual" role="img" aria-label="Bouteille Challenge Food d'extrait de vanille de Madagascar">
-          <div class="extract-bottle">
-            <div class="extract-cap"></div>
-            <div class="extract-neck"></div>
-            <div class="extract-body">
-              <div class="extract-label">
-                <span>Challenge Food.</span>
-                <strong>EXTRAIT DE VANILLE</strong>
-                <small>DE MADAGASCAR</small>
-                <b>1L</b>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="shop-card-copy">
-          <span class="shop-badge">Extrait · 1L</span>
-          <h3>Extrait de vanille de Madagascar</h3>
-          <p>Format professionnel 1 litre. Produit présenté selon le visuel Challenge Food fourni.</p>
-          <div class="shop-card-bottom"><span class="shop-price">Prix sur devis</span><button class="add-cart" type="button">Ajouter au panier</button></div>
-        </div>
-      </article>
+    <div class="container shop-grid catalog-all" id="shop-catalog" aria-label="Catalogue Challenge Food"></div>
 
-      <article class="shop-card shop-card-gourmet" data-id="grade-a" data-name="Gousses Bourbon Grade A" data-unit="kg">
-        <div class="shop-visual photo-visual" style="--shop-bg:url('assets/hero-beans.webp')"><img src="assets/hero-beans.webp" alt="Gousses de vanille Bourbon Grade A"></div>
-        <div class="shop-card-copy">
-          <span class="shop-badge">Grade A · Gourmet</span>
-          <h3>Gousses Bourbon Premium</h3>
-          <p>Gousses entières sélectionnées pour gastronomie, pâtisserie et distribution premium.</p>
-          <div class="shop-card-bottom"><span class="shop-price">Prix sur devis</span><button class="add-cart" type="button">Ajouter au panier</button></div>
+    <div class="container industrial-zone" id="industrial-buy">
+      <div class="industrial-copy">
+        <span class="industrial-kicker">POUR GRANDS ACHATS</span>
+        <h3>Achat industriel — à partir de 25 kg</h3>
+        <p>Pour importateurs, distributeurs, fabricants, extracteurs et acheteurs professionnels. Indiquez le produit, le volume et la destination pour recevoir une proposition adaptée.</p>
+        <div class="industrial-points">
+          <span>Minimum industriel : <strong>25 kg</strong></span>
+          <span>Conditionnement export</span>
+          <span>FOB · CIF · CIP · CFR · EXW</span>
         </div>
-      </article>
-
-      <article class="shop-card shop-card-extraction" data-id="grade-b" data-name="Vanille Grade B Extraction" data-unit="kg">
-        <div class="shop-visual photo-visual" style="--shop-bg:url('assets/crystal-beans.webp')"><img src="assets/crystal-beans.webp" alt="Vanille de Madagascar pour extraction"></div>
-        <div class="shop-card-copy">
-          <span class="shop-badge">Grade B · Extraction</span>
-          <h3>Vanille pour extraction</h3>
-          <p>Lots destinés aux fabricants d'arômes, extracteurs et applications industrielles.</p>
-          <div class="shop-card-bottom"><span class="shop-price">Prix sur devis</span><button class="add-cart" type="button">Ajouter au panier</button></div>
-        </div>
-      </article>
-
-      <article class="shop-card shop-card-powder" data-id="powder" data-name="Poudre de vanille" data-unit="kg">
-        <div class="shop-visual powder-visual" role="img" aria-label="Poudre de vanille de Madagascar"><span class="powder-mound"></span><i></i></div>
-        <div class="shop-card-copy">
-          <span class="shop-badge">Poudre</span>
-          <h3>Poudre de vanille</h3>
-          <p>Format ingrédient pour professionnels. Granulométrie et conditionnement à confirmer selon le besoin.</p>
-          <div class="shop-card-bottom"><span class="shop-price">Prix sur devis</span><button class="add-cart" type="button">Ajouter au panier</button></div>
-        </div>
-      </article>
+      </div>
+      <form class="industrial-form" action="https://formsubmit.co/commercial.export@cfood.store" method="POST">
+        <input type="hidden" name="_subject" value="Demande Grands Achats +25kg — cfood.store">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <label>Produit *
+          <select name="Produit" id="industrial-product" required></select>
+        </label>
+        <label>Quantité en kg *
+          <input type="number" name="Quantité kg" min="25" step="1" value="25" required>
+        </label>
+        <label>Société / Acheteur *
+          <input name="Société" required>
+        </label>
+        <label>Email professionnel *
+          <input type="email" name="Email" required>
+        </label>
+        <label>Pays / Port de destination *
+          <input name="Destination" required>
+        </label>
+        <label>Incoterm
+          <select name="Incoterm"><option>FOB</option><option>CIF</option><option>CIP</option><option>CFR</option><option>EXW</option><option>À discuter</option></select>
+        </label>
+        <label class="industrial-full">Spécifications / Message
+          <textarea name="Spécifications" rows="3" placeholder="Longueur, humidité, certification, conditionnement, fréquence d'achat…"></textarea>
+        </label>
+        <button class="industrial-submit industrial-full" type="submit">Demander un devis industriel +25 kg</button>
+      </form>
     </div>
   </section>
 
