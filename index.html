@@ -20,7 +20,7 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"Challenge Food SARL","url":"https://cfood.store/","email":"commercial.export@cfood.store","telephone":"+261322549937","address":{"@type":"PostalAddress","addressLocality":"Antananarivo","addressCountry":"MG"},"description":"Madagascar-registered import-export company supplying Bourbon vanilla to professional buyers."}
   </script>
-</head>
+  <link rel="stylesheet" href="shop.css?v=20260921-1505">\n</head>
 <body>
 <div class="site-loader" aria-hidden="true">
   <div class="loader-mark">
@@ -69,6 +69,7 @@
     <nav id="main-nav" class="main-nav" aria-label="Main navigation">
       <a href="#company" data-i18n="nav_company">Company</a>
       <a href="#products" data-i18n="nav_products">Products</a>
+      <a href="#boutique">Boutique</a>
       <a href="#special" data-i18n="nav_special">Special requests</a>
       <a href="#quality" data-i18n="nav_quality">Quality</a>
       <a href="#compliance" data-i18n="nav_compliance">Credentials</a>
@@ -224,6 +225,75 @@
     </div>
   </section>
 
+  <section id="boutique" class="shop-section" aria-labelledby="shop-title">
+    <div class="container shop-head">
+      <div>
+        <span class="section-kicker">Boutique Challenge Food</span>
+        <h2 id="shop-title">Vanille de Madagascar, prête à commander</h2>
+        <p>Ajoutez plusieurs produits au panier, ajustez les quantités puis validez votre commande en une seule fois. Les prix export et frais de transport sont confirmés selon la destination.</p>
+      </div>
+      <div class="shop-actions">
+        <button class="shop-music" type="button" aria-pressed="false"><span>♫</span> Musique boutique</button>
+        <button class="cart-open" type="button" aria-label="Ouvrir le panier">Panier <strong class="cart-count">0</strong></button>
+      </div>
+    </div>
+
+    <div class="container shop-grid">
+      <article class="shop-card shop-card-extract" data-id="extract-1l" data-name="Extrait de vanille de Madagascar 1L" data-unit="bouteille">
+        <div class="shop-visual extract-visual" role="img" aria-label="Bouteille Challenge Food d'extrait de vanille de Madagascar">
+          <div class="extract-bottle">
+            <div class="extract-cap"></div>
+            <div class="extract-neck"></div>
+            <div class="extract-body">
+              <div class="extract-label">
+                <span>Challenge Food.</span>
+                <strong>EXTRAIT DE VANILLE</strong>
+                <small>DE MADAGASCAR</small>
+                <b>1L</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="shop-card-copy">
+          <span class="shop-badge">Extrait · 1L</span>
+          <h3>Extrait de vanille de Madagascar</h3>
+          <p>Format professionnel 1 litre. Produit présenté selon le visuel Challenge Food fourni.</p>
+          <div class="shop-card-bottom"><span class="shop-price">Prix sur devis</span><button class="add-cart" type="button">Ajouter au panier</button></div>
+        </div>
+      </article>
+
+      <article class="shop-card shop-card-gourmet" data-id="grade-a" data-name="Gousses Bourbon Grade A" data-unit="kg">
+        <div class="shop-visual photo-visual" style="--shop-bg:url('assets/hero-beans.webp')"><img src="assets/hero-beans.webp" alt="Gousses de vanille Bourbon Grade A"></div>
+        <div class="shop-card-copy">
+          <span class="shop-badge">Grade A · Gourmet</span>
+          <h3>Gousses Bourbon Premium</h3>
+          <p>Gousses entières sélectionnées pour gastronomie, pâtisserie et distribution premium.</p>
+          <div class="shop-card-bottom"><span class="shop-price">Prix sur devis</span><button class="add-cart" type="button">Ajouter au panier</button></div>
+        </div>
+      </article>
+
+      <article class="shop-card shop-card-extraction" data-id="grade-b" data-name="Vanille Grade B Extraction" data-unit="kg">
+        <div class="shop-visual photo-visual" style="--shop-bg:url('assets/crystal-beans.webp')"><img src="assets/crystal-beans.webp" alt="Vanille de Madagascar pour extraction"></div>
+        <div class="shop-card-copy">
+          <span class="shop-badge">Grade B · Extraction</span>
+          <h3>Vanille pour extraction</h3>
+          <p>Lots destinés aux fabricants d'arômes, extracteurs et applications industrielles.</p>
+          <div class="shop-card-bottom"><span class="shop-price">Prix sur devis</span><button class="add-cart" type="button">Ajouter au panier</button></div>
+        </div>
+      </article>
+
+      <article class="shop-card shop-card-powder" data-id="powder" data-name="Poudre de vanille" data-unit="kg">
+        <div class="shop-visual powder-visual" role="img" aria-label="Poudre de vanille de Madagascar"><span class="powder-mound"></span><i></i></div>
+        <div class="shop-card-copy">
+          <span class="shop-badge">Poudre</span>
+          <h3>Poudre de vanille</h3>
+          <p>Format ingrédient pour professionnels. Granulométrie et conditionnement à confirmer selon le besoin.</p>
+          <div class="shop-card-bottom"><span class="shop-price">Prix sur devis</span><button class="add-cart" type="button">Ajouter au panier</button></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <section id="special" class="section">
     <div class="container">
       <div class="section-heading narrow">
@@ -327,6 +397,43 @@
   </section>
 </main>
 
+<div class="shop-cart" aria-hidden="true">
+  <div class="shop-cart-backdrop" data-cart-close></div>
+  <aside class="shop-cart-panel" role="dialog" aria-modal="true" aria-label="Panier">
+    <div class="shop-cart-head"><div><small>Boutique Challenge Food</small><h3>Votre panier</h3></div><button type="button" data-cart-close aria-label="Fermer">×</button></div>
+    <div class="cart-items"></div>
+    <div class="cart-empty">Votre panier est vide.</div>
+    <div class="shop-cart-foot">
+      <p>Les prix, l'expédition et le paiement sont confirmés après validation de la destination.</p>
+      <button class="checkout-open" type="button">Continuer vers le paiement</button>
+    </div>
+  </aside>
+</div>
+
+<div class="checkout-modal" aria-hidden="true">
+  <div class="checkout-backdrop" data-checkout-close></div>
+  <div class="checkout-panel" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+    <button class="checkout-close" type="button" data-checkout-close aria-label="Fermer">×</button>
+    <span class="section-kicker">Commande sécurisée</span>
+    <h3 id="checkout-title">Finaliser la commande</h3>
+    <p class="checkout-note">Votre panier est transmis à Challenge Food. Le montant final et le lien de paiement sécurisé sont envoyés après confirmation du transport et des spécifications.</p>
+    <form class="checkout-form" action="https://formsubmit.co/commercial.export@cfood.store" method="POST">
+      <input type="hidden" name="_subject" value="Nouvelle commande Boutique cfood.store">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="Panier" id="checkout-cart-summary">
+      <label>Société / Nom *<input name="Client" required></label>
+      <label>Email *<input name="Email" type="email" required></label>
+      <label>Pays *<input name="Country" required></label>
+      <label>Téléphone / WhatsApp<input name="Phone"></label>
+      <label class="checkout-full">Adresse / destination *<input name="Destination" required></label>
+      <label class="checkout-full">Message<textarea name="Message" rows="3" placeholder="Conditionnement, incoterm, délai souhaité…"></textarea></label>
+      <div class="checkout-summary checkout-full"></div>
+      <button class="checkout-submit checkout-full" type="submit">Valider la commande et demander le lien de paiement</button>
+    </form>
+  </div>
+</div>
+
 <footer class="site-footer">
   <div class="container footer-grid">
     <div><img src="assets/logo.png" alt="Challenge Food Export" width="140" height="70"><p data-i18n="footer_tagline">Madagascar Bourbon vanilla · direct-origin professional supply.</p></div>
@@ -350,5 +457,5 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" defer></script>
 <script src="experience.js?v=20260921-1418" defer></script>
-</body>
+  <script src="shop.js?v=20260921-1505" defer></script>\n</body>
 </html>
