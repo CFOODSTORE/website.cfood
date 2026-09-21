@@ -1,0 +1,74 @@
+/* RSE / ESG page */
+.rse-page{
+  background:
+    radial-gradient(circle at 85% 4%,rgba(211,171,86,.13),transparent 26%),
+    linear-gradient(180deg,#f8f4ea 0%,#eef2ec 100%);
+  color:#17382a;
+  padding:clamp(48px,6vh,76px) 0 90px!important;
+}
+.rse-hero{
+  display:grid;grid-template-columns:minmax(0,1.02fr) minmax(380px,.98fr);gap:34px;align-items:stretch;
+}
+.rse-copy{
+  padding:clamp(18px,2vw,30px) 0;display:flex;flex-direction:column;justify-content:center;
+}
+.rse-copy h2{
+  margin:.15em 0 .3em;font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(3rem,5.7vw,6rem);line-height:.92;letter-spacing:-.045em;max-width:780px;
+}
+.rse-lead{font-size:clamp(1.03rem,1.4vw,1.2rem);line-height:1.65;max-width:760px;color:#4e6258}
+.rse-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+.rse-pillars article{
+  min-height:170px;padding:19px;border-radius:18px;background:rgba(255,255,255,.82);
+  border:1px solid rgba(23,77,55,.09);box-shadow:0 14px 32px rgba(27,56,43,.07)
+}
+.rse-pillars strong{display:block;font-family:Georgia,serif;font-size:1.2rem;line-height:1.05;margin-bottom:9px}
+.rse-pillars p{margin:0;color:#64746c;font-size:.88rem;line-height:1.5}
+.rse-photo{
+  background:#c7d5ca center/cover no-repeat;
+  border-radius:28px;min-height:260px;overflow:hidden;position:relative;
+  box-shadow:0 24px 70px rgba(24,53,40,.15)
+}
+.rse-photo:after{
+  content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);border-radius:inherit;pointer-events:none
+}
+.rse-photo-curing{min-height:610px}
+.rse-impact{margin-top:50px}
+.rse-impact-head{display:grid;grid-template-columns:.45fr 1.55fr;gap:24px;align-items:start;margin-bottom:24px}
+.rse-impact-head h3{
+  margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,3.8vw,4rem);line-height:.98;letter-spacing:-.035em
+}
+.rse-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rse-card{
+  margin:0;background:#fff;border-radius:24px;overflow:hidden;border:1px solid rgba(20,65,48,.08);
+  box-shadow:0 18px 46px rgba(29,52,42,.09)
+}
+.rse-card.rse-wide{grid-column:span 2}
+.rse-card .rse-photo{border-radius:0;min-height:280px;box-shadow:none}
+.rse-card.rse-wide .rse-photo{min-height:360px}
+.rse-card figcaption{display:grid;gap:7px;padding:20px 21px 23px}
+.rse-card figcaption strong{font-family:Georgia,serif;font-size:1.35rem;line-height:1.08}
+.rse-card figcaption span{font-size:.9rem;color:#64746c;line-height:1.55}
+.rse-card:hover .rse-photo{transform:scale(1.01)}
+.rse-card .rse-photo{transition:transform .35s ease}
+
+/* Last-resort cleanup for an old floating resource card that could survive cache. */
+body.cf-pages-ready .cf-forced-hidden{display:none!important}
+body.cf-pages-ready [data-resource-center],
+body.cf-pages-ready .buyer-resource-center,
+body.cf-pages-ready .resource-center-floating{display:none!important}
+
+@media(max-width:1050px){
+  .rse-hero{grid-template-columns:1fr}
+  .rse-photo-curing{min-height:480px;order:-1}
+  .rse-pillars{grid-template-columns:1fr 1fr 1fr}
+}
+@media(max-width:760px){
+  .rse-page{padding:34px 0 70px!important}
+  .rse-copy h2{font-size:clamp(2.6rem,13vw,4.4rem)}
+  .rse-pillars{grid-template-columns:1fr}
+  .rse-impact-head{grid-template-columns:1fr}
+  .rse-gallery{grid-template-columns:1fr}
+  .rse-card.rse-wide{grid-column:auto}
+  .rse-card .rse-photo,.rse-card.rse-wide .rse-photo{min-height:280px}
+}
