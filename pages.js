@@ -58,6 +58,7 @@
     const next = document.querySelector('[data-page-next]');
     if (prev) prev.disabled = current <= 0;
     if (next) next.disabled = current >= pages.length - 1;
+    setTimeout(() => window.CFoodTranslate?.(), 0);
   }
 
   function goToPage(index, options = {}) {
