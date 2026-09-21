@@ -55,6 +55,26 @@
   transform:rotateY(0deg)!important;
   z-index:5;
 }
+#vanilla-journey .story-frame.is-door-prep{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:rotateY(92deg)!important;
+  z-index:5;
+}
+#vanilla-journey .story-frame.is-door-out-back{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:rotateY(92deg)!important;
+  transform-origin:right center!important;
+  z-index:4;
+}
+#vanilla-journey .story-frame.is-door-prep-back{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:rotateY(-92deg)!important;
+  transform-origin:right center!important;
+  z-index:5;
+}
 #vanilla-journey .story-frame,
 #vanilla-journey .story-frame.is-door-in,
 #vanilla-journey .story-frame.is-door-out{
