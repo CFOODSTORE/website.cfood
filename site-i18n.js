@@ -359,19 +359,30 @@
     'Madagascar Vanilla','Supplier & Wholesale','Quality & Documents','Supplier Verification','About Challenge Food','Buyer Resource Center'
   ]);
   function removeUnwantedCards(){
-    $('body *').forEach(el=>{
+    const matches = $('body *').filter(el=>{
       const t=(el.textContent||'').trim();
-      const unwanted = unwantedTitles.has(t) || t.includes('Buyer Resource Center') || t.includes('Guides for pricing, import, export and supplier qualification');
-      if(!unwanted)return;
-      let card=el.closest('article,[class*="card"],[class*="tile"],[class*="option"],aside');
-      if(!card){
-        card=el;
-        for(let i=0;i<4&&card?.parentElement;i++){
-          if(getComputedStyle(card).position==='fixed'||getComputedStyle(card).position==='absolute')break;
-          card=card.parentElement;
-        }
+      return unwantedTitles.has(t) ||
+        t.includes('Buyer Resource Center') ||
+        t.includes('Guides for pricing, import, export and supplier qualification');
+    });
+
+    matches.forEach(el=>{
+      if(el.closest('#compliance,#boutique,#rse')) return;
+
+      let node=el;
+      let candidate=null;
+      for(let i=0;i<7 && node && node!==document.body;i++,node=node.parentElement){
+        const style=getComputedStyle(node);
+        const rect=node.getBoundingClientRect();
+        const looksFloating=(style.position==='fixed'||style.position==='absolute'||style.position==='sticky');
+        const cardLike=node.matches('article,aside,[class*="card"],[class*="tile"],[class*="option"],[class*="resource"]');
+        const saneSize=rect.width>120 && rect.width<700 && rect.height>120 && rect.height<900;
+        if((looksFloating||cardLike) && saneSize) candidate=node;
       }
-      if(card && !card.closest('#compliance') && !card.closest('#boutique') && !card.closest('#rse')) card.classList.add('cf-forced-hidden');
+      const victim=candidate||el.closest('article,aside,[class*="card"],[class*="tile"],[class*="option"],[class*="resource"]');
+      if(victim && !victim.closest('#compliance,#boutique,#rse')){
+        victim.remove();
+      }
     });
   }
 
@@ -393,5 +404,7 @@
 
   window.CFoodTranslate=apply;
   setTimeout(()=>{removeUnwantedCards();apply();},0);
+  const cleanupTimer=setInterval(removeUnwantedCards,250);
+  setTimeout(()=>clearInterval(cleanupTimer),8000);
   window.addEventListener('load',()=>{removeUnwantedCards();apply();},{once:true});
 })();
