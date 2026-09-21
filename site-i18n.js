@@ -3,8 +3,8 @@
 
   const EXTRA = {
     en:{
-      nav:['Home','Company','Origin','Shop','Quality','Credentials','Contact / Quote'],
-      page:['Home','Company','Origin','Shop','Quality','Credentials','Contact / Quote'],
+      nav:['Home','Company','Origin','RSE','Shop','Quality','Credentials','Contact / Quote'],
+      page:['Home','Company','Origin','RSE','Shop','Quality','Credentials','Contact / Quote'],
       storyKicker:'Sambava · Madagascar Bourbon Vanilla',
       storyTitle:'From Sambava farms to international buyers',
       story:[
@@ -46,8 +46,8 @@
       sound:'Sound'
     },
     fr:{
-      nav:['Accueil','Société','Origine','Boutique','Qualité','Références','Contact / Devis'],
-      page:['Accueil','Société','Origine','Boutique','Qualité','Références','Contact / Devis'],
+      nav:['Accueil','Société','Origine','RSE','Boutique','Qualité','Références','Contact / Devis'],
+      page:['Accueil','Société','Origine','RSE','Boutique','Qualité','Références','Contact / Devis'],
       storyKicker:'Sambava · Vanille Bourbon de Madagascar',
       storyTitle:'Des producteurs de Sambava aux acheteurs internationaux',
       story:[
@@ -89,8 +89,8 @@
       sound:'Son'
     },
     tr:{
-      nav:['Ana Sayfa','Şirket','Menşe','Mağaza','Kalite','Belgeler','İletişim / Teklif'],
-      page:['Ana Sayfa','Şirket','Menşe','Mağaza','Kalite','Belgeler','İletişim / Teklif'],
+      nav:['Ana Sayfa','Şirket','Menşe','RSE','Mağaza','Kalite','Belgeler','İletişim / Teklif'],
+      page:['Ana Sayfa','Şirket','Menşe','RSE','Mağaza','Kalite','Belgeler','İletişim / Teklif'],
       storyKicker:'Sambava · Madagaskar Bourbon Vanilyası',
       storyTitle:'Sambava çiftliklerinden uluslararası alıcılara',
       story:[
@@ -132,8 +132,8 @@
       sound:'Ses'
     },
     ru:{
-      nav:['Главная','Компания','Происхождение','Магазин','Качество','Документы','Контакт / Запрос'],
-      page:['Главная','Компания','Происхождение','Магазин','Качество','Документы','Контакт / Запрос'],
+      nav:['Главная','Компания','Происхождение','RSE','Магазин','Качество','Документы','Контакт / Запрос'],
+      page:['Главная','Компания','Происхождение','RSE','Магазин','Качество','Документы','Контакт / Запрос'],
       storyKicker:'Самбава · Бурбонская ваниль Мадагаскара',
       storyTitle:'От ферм Самбавы до международных покупателей',
       story:[
@@ -175,8 +175,8 @@
       sound:'Звук'
     },
     zh:{
-      nav:['首页','公司','产地','商店','质量','资质','联系 / 询价'],
-      page:['首页','公司','产地','商店','质量','资质','联系 / 询价'],
+      nav:['首页','公司','产地','RSE','商店','质量','资质','联系 / 询价'],
+      page:['首页','公司','产地','RSE','商店','质量','资质','联系 / 询价'],
       storyKicker:'桑巴瓦 · 马达加斯加波旁香草',
       storyTitle:'从桑巴瓦农场到国际买家',
       story:[
@@ -218,8 +218,8 @@
       sound:'声音'
     },
     ar:{
-      nav:['الرئيسية','الشركة','المنشأ','المتجر','الجودة','الوثائق','اتصال / عرض سعر'],
-      page:['الرئيسية','الشركة','المنشأ','المتجر','الجودة','الوثائق','اتصال / عرض سعر'],
+      nav:['الرئيسية','الشركة','المنشأ','RSE','المتجر','الجودة','الوثائق','اتصال / عرض سعر'],
+      page:['الرئيسية','الشركة','المنشأ','RSE','المتجر','الجودة','الوثائق','اتصال / عرض سعر'],
       storyKicker:'سامبافا · فانيليا بوربون من مدغشقر',
       storyTitle:'من مزارع سامبافا إلى المشترين الدوليين',
       story:[
@@ -260,6 +260,15 @@
       checkoutSubmit:'تأكيد الطلب وطلب رابط الدفع',
       sound:'الصوت'
     }
+  };
+
+  const RSE_TEXT = {
+    en:{kicker:'Social & territorial responsibility',title:'Growing together with Ambohimitsinjo, Sambava',lead:'Challenge Food develops responsible sourcing relationships with qualified producers who are trained and supported in the Commune of Ambohimitsinjo, Sambava, Madagascar.',p1t:'Supported producers',p1d:'Training, technical support, quality improvement and practices aligned with market requirements.',p2t:'Local education',p2d:'Supporting local development, including the creation and support of schools in the sourcing area.',p3t:'Dynamic agroforestry',p3d:'Reforestation, plantation monitoring and support for vanilla plots through an agroforestry approach.',impactKicker:'Actions in the territory',impactTitle:'A supply chain that also contributes to local development',eduTitle:'Education & communities',eduText:'Investing in children’s future and strengthening useful infrastructure for local communities.',schoolTitle:'Local schools',schoolText:'Concrete actions carried out close to families and villages in the sourcing area.',communityTitle:'Territorial development',communityText:'An approach combining economic activity, social support and local opportunities.',treeTitle:'Monitored reforestation',treeText:'Plantations are monitored over time to strengthen establishment and ecological contribution.',agroTitle:'Agroforestry for vanilla plots',agroText:'Supporting vegetation restoration and plot management for production better integrated into the landscape.'},
+    fr:{kicker:'Responsabilité sociale & territoriale',title:'Grandir avec Ambohimitsinjo, Sambava',lead:"Challenge Food développe une relation d'achat responsable avec des producteurs qualifiés, formés et accompagnés dans la Commune d'Ambohimitsinjo, Sambava, Madagascar.",p1t:'Producteurs accompagnés',p1d:'Formation, accompagnement technique, qualité et pratiques adaptées aux exigences du marché.',p2t:'Éducation locale',p2d:"Soutien au développement de la zone, notamment par la création et l'appui à des écoles locales.",p3t:'Agroforesterie dynamique',p3d:'Reboisement, suivi des plantations et accompagnement des parcelles de vanille dans une logique agroforestière.',impactKicker:'Actions dans le territoire',impactTitle:"Une chaîne d'approvisionnement qui contribue aussi au développement local",eduTitle:'Éducation & communautés',eduText:"Investir dans l'avenir des enfants et renforcer les infrastructures utiles aux communautés locales.",schoolTitle:'Écoles locales',schoolText:"Des actions concrètes menées au plus près des familles et des villages de la zone d'approvisionnement.",communityTitle:'Développement de la zone',communityText:'Une approche territoriale qui associe activité économique, accompagnement social et perspectives locales.',treeTitle:'Reboisement suivi',treeText:'Les plantations sont suivies dans le temps afin de renforcer leur installation et leur contribution écologique.',agroTitle:'Agroforesterie des parcelles de vanille',agroText:'Accompagner la restauration végétale et la gestion des parcelles pour une production mieux intégrée au paysage.'},
+    tr:{kicker:'Sosyal ve bölgesel sorumluluk',title:'Ambohimitsinjo, Sambava ile birlikte büyümek',lead:'Challenge Food, Madagaskar Sambava’daki Ambohimitsinjo Belediyesi’nde eğitim alan ve desteklenen nitelikli üreticilerle sorumlu tedarik ilişkileri geliştirir.',p1t:'Desteklenen üreticiler',p1d:'Eğitim, teknik destek, kalite geliştirme ve pazar gerekliliklerine uygun uygulamalar.',p2t:'Yerel eğitim',p2d:'Tedarik bölgesinde okul kurulması ve desteklenmesi dâhil yerel kalkınmaya katkı.',p3t:'Dinamik agroforestry',p3d:'Ağaçlandırma, dikimlerin takibi ve vanilya parsellerinin agroforestry yaklaşımıyla desteklenmesi.',impactKicker:'Bölgedeki çalışmalar',impactTitle:'Yerel kalkınmaya da katkı sağlayan bir tedarik zinciri',eduTitle:'Eğitim ve topluluklar',eduText:'Çocukların geleceğine yatırım yapmak ve yerel topluluklara yararlı altyapıyı güçlendirmek.',schoolTitle:'Yerel okullar',schoolText:'Tedarik alanındaki ailelere ve köylere yakın somut faaliyetler.',communityTitle:'Bölgesel kalkınma',communityText:'Ekonomik faaliyeti, sosyal desteği ve yerel fırsatları birleştiren yaklaşım.',treeTitle:'İzlenen ağaçlandırma',treeText:'Dikimler, tutunmalarını ve ekolojik katkılarını güçlendirmek için zaman içinde izlenir.',agroTitle:'Vanilya parsellerinde agroforestry',agroText:'Üretimi peyzaja daha iyi entegre etmek için bitki örtüsü restorasyonu ve parsel yönetimini desteklemek.'},
+    ru:{kicker:'Социальная и территориальная ответственность',title:'Развиваемся вместе с Амбухимицинжу, Самбава',lead:'Challenge Food развивает ответственную закупочную модель с квалифицированными производителями, которые проходят обучение и получают сопровождение в коммуне Амбухимицинжу, Самбава, Мадагаскар.',p1t:'Поддержка производителей',p1d:'Обучение, техническое сопровождение, качество и практики, соответствующие требованиям рынка.',p2t:'Местное образование',p2d:'Поддержка развития территории, включая создание и поддержку местных школ.',p3t:'Динамическая агролесомелиорация',p3d:'Лесовосстановление, мониторинг посадок и сопровождение ванильных участков в агролесоводческой системе.',impactKicker:'Действия на территории',impactTitle:'Цепочка поставок, которая также способствует местному развитию',eduTitle:'Образование и сообщества',eduText:'Инвестиции в будущее детей и укрепление полезной инфраструктуры для местных сообществ.',schoolTitle:'Местные школы',schoolText:'Конкретные действия рядом с семьями и деревнями в зоне закупок.',communityTitle:'Развитие территории',communityText:'Подход, объединяющий экономическую деятельность, социальную поддержку и местные перспективы.',treeTitle:'Мониторинг лесовосстановления',treeText:'Посадки отслеживаются во времени для повышения приживаемости и экологического эффекта.',agroTitle:'Агролесоводство на ванильных участках',agroText:'Поддержка восстановления растительности и управления участками для лучшей интеграции производства в ландшафт.'},
+    zh:{kicker:'社会与区域责任',title:'与安布希米钦朱和桑巴瓦共同发展',lead:'Challenge Food 在马达加斯加桑巴瓦的安布希米钦朱市与经过培训、指导并符合要求的生产者建立负责任的采购关系。',p1t:'生产者培训与支持',p1d:'提供培训、技术支持、质量提升以及符合市场要求的实践指导。',p2t:'当地教育',p2d:'支持采购区的发展，包括建设和支持当地学校。',p3t:'动态农林复合系统',p3d:'开展植树造林、持续监测种植成果，并以农林复合方式支持香草地块。',impactKicker:'区域行动',impactTitle:'让供应链同时促进当地发展',eduTitle:'教育与社区',eduText:'投资儿童未来，并加强对当地社区有用的基础设施。',schoolTitle:'当地学校',schoolText:'在采购区家庭和村庄附近开展具体行动。',communityTitle:'区域发展',communityText:'将经济活动、社会支持和本地发展机会结合起来。',treeTitle:'持续跟踪的植树造林',treeText:'对种植进行持续监测，以提高成活和生态贡献。',agroTitle:'香草地块农林复合经营',agroText:'支持植被恢复和地块管理，使生产更好地融入当地景观。'},
+    ar:{kicker:'المسؤولية الاجتماعية والإقليمية',title:'النمو مع أمبوهيميتسينجو، سامبافا',lead:'تطوّر Challenge Food علاقات شراء مسؤولة مع منتجين مؤهلين ومدرَّبين ومواكبين في بلدية أمبوهيميتسينجو، سامبافا، مدغشقر.',p1t:'دعم المنتجين',p1d:'التدريب والمواكبة التقنية وتحسين الجودة والممارسات الملائمة لمتطلبات السوق.',p2t:'التعليم المحلي',p2d:'دعم تنمية المنطقة، بما في ذلك إنشاء ودعم المدارس المحلية.',p3t:'الحراجة الزراعية الديناميكية',p3d:'إعادة التشجير ومتابعة الغرسات ومواكبة حقول الفانيليا ضمن نهج الحراجة الزراعية.',impactKicker:'أنشطة في المنطقة',impactTitle:'سلسلة توريد تساهم أيضاً في التنمية المحلية',eduTitle:'التعليم والمجتمعات',eduText:'الاستثمار في مستقبل الأطفال وتعزيز البنية التحتية المفيدة للمجتمعات المحلية.',schoolTitle:'المدارس المحلية',schoolText:'أنشطة ملموسة بالقرب من الأسر والقرى في منطقة التوريد.',communityTitle:'تنمية المنطقة',communityText:'نهج يجمع النشاط الاقتصادي والدعم الاجتماعي والفرص المحلية.',treeTitle:'إعادة تشجير مع المتابعة',treeText:'تتم متابعة الغرسات مع مرور الوقت لتعزيز نجاحها ومساهمتها البيئية.',agroTitle:'الحراجة الزراعية لحقول الفانيليا',agroText:'دعم استعادة الغطاء النباتي وإدارة الحقول من أجل إنتاج أكثر اندماجاً في المشهد الطبيعي.'}
   };
 
   const $ = (s,root=document)=>root.querySelector(s);
@@ -333,10 +342,13 @@
     set('.checkout-submit',d.checkoutSubmit);
     set('.sound-label',d.sound);
 
+    const rse=RSE_TEXT[code]||RSE_TEXT.en;
+    $('[data-rse]').forEach(el=>{const k=el.dataset.rse;if(rse[k]!==undefined&&el.textContent!==rse[k])el.textContent=rse[k];});
+
     const pageName=$('.page-name');
     if(pageName){
       const active=$('.cf-page.page-active');
-      const ids=['home','company','vanilla-journey','boutique','quality','compliance','requests'];
+      const ids=['home','company','vanilla-journey','rse','boutique','quality','compliance','requests'];
       const i=ids.indexOf(active?.id); if(i>=0)pageName.textContent=d.page[i];
     }
     translateCartRows(d);
@@ -344,14 +356,22 @@
 
   // Remove the unwanted floating option cards visible over the home page.
   const unwantedTitles=new Set([
-    'Madagascar Vanilla','Supplier & Wholesale','Quality & Documents','Supplier Verification','About Challenge Food'
+    'Madagascar Vanilla','Supplier & Wholesale','Quality & Documents','Supplier Verification','About Challenge Food','Buyer Resource Center'
   ]);
   function removeUnwantedCards(){
-    $$('body *').forEach(el=>{
+    $('body *').forEach(el=>{
       const t=(el.textContent||'').trim();
-      if(!unwantedTitles.has(t))return;
-      const card=el.closest('article,[class*="card"],[class*="tile"],[class*="option"]') || el.parentElement?.parentElement;
-      if(card && !card.closest('#compliance') && !card.closest('#boutique')) card.classList.add('cf-forced-hidden');
+      const unwanted = unwantedTitles.has(t) || t.includes('Buyer Resource Center') || t.includes('Guides for pricing, import, export and supplier qualification');
+      if(!unwanted)return;
+      let card=el.closest('article,[class*="card"],[class*="tile"],[class*="option"],aside');
+      if(!card){
+        card=el;
+        for(let i=0;i<4&&card?.parentElement;i++){
+          if(getComputedStyle(card).position==='fixed'||getComputedStyle(card).position==='absolute')break;
+          card=card.parentElement;
+        }
+      }
+      if(card && !card.closest('#compliance') && !card.closest('#boutique') && !card.closest('#rse')) card.classList.add('cf-forced-hidden');
     });
   }
 
