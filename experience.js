@@ -292,10 +292,11 @@ document.documentElement.classList.add('js');
     setTimeout(releaseLoader, 1500);
   }
 
-  // Animated wipe on internal navigation: creates a slideshow/page-change feel.
+  // Internal navigation: keep the cinematic sound cue, but use reliable smooth scrolling.
+  // The former full-screen page wipe could remain visible after an interrupted animation.
   document.addEventListener('click', event => {
     const anchor = event.target.closest('a[href^="#"]');
-    if (!anchor || !pageWipe) return;
+    if (!anchor) return;
     const href = anchor.getAttribute('href');
     if (!href || href === '#' || href === '#top') return;
     const destination = document.querySelector(href);
@@ -304,21 +305,8 @@ document.documentElement.classList.add('js');
     event.preventDefault();
     const direction = destination.getBoundingClientRect().top < 0 ? -1 : 1;
     playTransition(direction);
-
-    if (window.gsap && !reduceMotion) {
-      const g = window.gsap;
-      g.killTweensOf(pageWipe);
-      g.set(pageWipe, {yPercent:direction > 0 ? 105 : -105});
-      g.timeline()
-        .to(pageWipe, {yPercent:0, duration:.34, ease:'power3.inOut'})
-        .add(() => {
-          const top = destination.getBoundingClientRect().top + window.scrollY - (header?.offsetHeight || 0);
-          window.scrollTo({top, behavior:'auto'});
-        })
-        .to(pageWipe, {yPercent:direction > 0 ? -105 : 105, duration:.42, ease:'power3.inOut', delay:.08});
-    } else {
-      destination.scrollIntoView({behavior:reduceMotion ? 'auto' : 'smooth', block:'start'});
-    }
+    const top = destination.getBoundingClientRect().top + window.scrollY - (header?.offsetHeight || 0);
+    window.scrollTo({top, behavior:reduceMotion ? 'auto' : 'smooth'});
   }, false);
 
   /* ---------------------------------------------------------
