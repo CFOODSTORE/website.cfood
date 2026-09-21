@@ -352,9 +352,9 @@
     set('.sound-label',d.sound);
 
     const rse=RSE_TEXT[code]||RSE_TEXT.en;
-    $('[data-rse]').forEach(el=>{const k=el.dataset.rse;if(rse[k]!==undefined&&el.textContent!==rse[k])el.textContent=rse[k];});
+    $$('[data-rse]').forEach(el=>{const k=el.dataset.rse;if(rse[k]!==undefined&&el.textContent!==rse[k])el.textContent=rse[k];});
     const resources=RESOURCE_TEXT[code]||RESOURCE_TEXT.en;
-    $('[data-resource-i18n]').forEach(el=>{const k=el.dataset.resourceI18n;if(resources[k]!==undefined&&el.textContent!==resources[k])el.textContent=resources[k];});
+    $$('[data-resource-i18n]').forEach(el=>{const k=el.dataset.resourceI18n;if(resources[k]!==undefined&&el.textContent!==resources[k])el.textContent=resources[k];});
 
     const pageName=$('.page-name');
     if(pageName){
@@ -378,7 +378,7 @@
     });
 
     matches.forEach(el=>{
-      if(el.closest('#compliance,#boutique,#rse,#resources')) return;
+      if(el.closest('#resources')) return;
 
       let node=el;
       let candidate=null;
@@ -391,7 +391,7 @@
         if((looksFloating||cardLike) && saneSize) candidate=node;
       }
       const victim=candidate||el.closest('article,aside,[class*="card"],[class*="tile"],[class*="option"],[class*="resource"]');
-      if(victim && !victim.closest('#compliance,#boutique,#rse,#resources')){
+      if(victim && !victim.closest('#resources')){
         victim.remove();
       }
     });
