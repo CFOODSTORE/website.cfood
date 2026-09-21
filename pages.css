@@ -230,3 +230,11 @@ body.cf-pages-ready main>.cf-page.page-door-out-back{
 body.cf-pages-ready #resources:not(.page-active):not(.page-door-prep):not(.page-door-prep-back):not(.page-door-in):not(.page-door-out):not(.page-door-out-back){
   display:none!important;
 }
+
+
+/* Browser-level safety: hidden sections can never receive clicks or paint over the active page. */
+body.cf-pages-ready main>.cf-page[hidden]{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
