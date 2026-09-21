@@ -353,6 +353,8 @@
 
     const rse=RSE_TEXT[code]||RSE_TEXT.en;
     $('[data-rse]').forEach(el=>{const k=el.dataset.rse;if(rse[k]!==undefined&&el.textContent!==rse[k])el.textContent=rse[k];});
+    const resources=RESOURCE_TEXT[code]||RESOURCE_TEXT.en;
+    $('[data-resource-i18n]').forEach(el=>{const k=el.dataset.resourceI18n;if(resources[k]!==undefined&&el.textContent!==resources[k])el.textContent=resources[k];});
 
     const pageName=$('.page-name');
     if(pageName){
@@ -368,7 +370,7 @@
     'Madagascar Vanilla','Supplier & Wholesale','Quality & Documents','Supplier Verification','About Challenge Food','Buyer Resource Center'
   ]);
   function removeUnwantedCards(){
-    const matches = $('body *').filter(el=>{
+    const matches = $$('body *').filter(el=>{
       const t=(el.textContent||'').trim();
       return unwantedTitles.has(t) ||
         t.includes('Buyer Resource Center') ||
