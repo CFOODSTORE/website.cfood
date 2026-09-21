@@ -20,7 +20,9 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"Challenge Food SARL","url":"https://cfood.store/","email":"commercial.export@cfood.store","telephone":"+261322549937","address":{"@type":"PostalAddress","addressLocality":"Antananarivo","addressCountry":"MG"},"description":"Madagascar-registered import-export company supplying Bourbon vanilla to professional buyers."}
   </script>
-  <link rel="stylesheet" href="shop.css?v=20260921-1505">\n</head>
+  <link rel="stylesheet" href="shop.css?v=20260921-1525">
+  <link rel="stylesheet" href="pages.css?v=20260921-1525">
+</head>
 <body>
 <div class="site-loader" aria-hidden="true">
   <div class="loader-mark">
@@ -59,7 +61,7 @@
 <div class="site-grain" aria-hidden="true"></div>
 <header class="site-header" id="top">
   <div class="container nav-wrap">
-    <a class="brand" href="#top" aria-label="Challenge Food home"><img src="assets/logo.png" alt="Challenge Food Export logo" width="178" height="90"></a>
+    <a class="brand" href="#home" aria-label="Challenge Food home"><img src="assets/logo.png" alt="Challenge Food Export logo" width="178" height="90"></a>
     <div class="nav-actions">
       <label class="language-picker" aria-label="Language"><span class="lang-label">🌐</span><select id="language-select" aria-label="Language selector">
         <option value="en">English</option><option value="fr">Français</option><option value="tr">Türkçe</option><option value="ru">Русский</option><option value="zh">中文</option><option value="ar">العربية</option>
@@ -67,19 +69,19 @@
       <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" data-i18n="menu">Menu</button>
     </div>
     <nav id="main-nav" class="main-nav" aria-label="Main navigation">
-      <a href="#company" data-i18n="nav_company">Company</a>
-      <a href="#products" data-i18n="nav_products">Products</a>
+      <a href="#home">Accueil</a>
+      <a href="#company">Société</a>
+      <a href="#vanilla-journey">Origine</a>
       <a href="#boutique">Boutique</a>
-      <a href="#special" data-i18n="nav_special">Special requests</a>
-      <a href="#quality" data-i18n="nav_quality">Quality</a>
-      <a href="#compliance" data-i18n="nav_compliance">Credentials</a>
-      <a class="nav-cta magnetic" href="#requests" data-open-tab="quote" data-i18n="nav_quote">Order / Quote</a>
+      <a href="#quality">Qualité</a>
+      <a href="#compliance">Références</a>
+      <a class="nav-cta magnetic" href="#requests" data-open-tab="quote">Contact / Devis</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <section class="hero">
+  <section id="home" class="hero cf-page">
     <div class="hero-image" aria-hidden="true"><img src="assets/hero-beans.webp" alt=""></div>
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="hero-overlay"></div>
@@ -99,7 +101,7 @@
     </div>
   </section>
 
-  <section class="experience-marquee" aria-label="Vanilla range">
+  <section class="experience-marquee cf-legacy" aria-label="Vanilla range">
     <div class="marquee-track">
       <span data-i18n="grade_a">Grade A / Gourmet</span><i>✦</i>
       <span data-i18n="grade_b">Grade B / Extraction</span><i>✦</i>
@@ -116,7 +118,7 @@
     </div>
   </section>
 
-  <section class="trust-strip">
+  <section class="trust-strip cf-legacy">
     <div class="container trust-grid">
       <div><span class="trust-icon">01</span><p><strong data-i18n="trust_registered">Registered company</strong><br><span data-i18n="trust_registered_text">Challenge Food SARL · Madagascar</span></p></div>
       <div><span class="trust-icon">02</span><p><strong data-i18n="trust_export">Export activity</strong><br><span data-i18n="trust_export_text">Registered activity expressly includes vanilla</span></p></div>
@@ -124,7 +126,7 @@
     </div>
   </section>
 
-  <section id="company" class="section">
+  <section id="company" class="section cf-page">
     <div class="container two-col">
       <div class="copy-block">
         <span class="section-kicker">Challenge Food SARL</span>
@@ -142,7 +144,7 @@
     </div>
   </section>
 
-  <section class="cinematic-story" id="vanilla-journey" aria-labelledby="story-title">
+  <section class="cinematic-story cf-page" id="vanilla-journey" aria-labelledby="story-title">
     <div class="story-pin">
       <div class="story-media" aria-hidden="true">
         <figure class="story-frame story-frame-1">
@@ -197,15 +199,15 @@
           <span class="story-rail-fill"></span>
           <i>01</i><i>02</i><i>03</i><i>04</i>
         </div>
-        <a class="story-cta" href="#products">
-          <span>Discover our vanilla products</span>
+        <a class="story-cta" href="#boutique">
+          <span>Découvrir toute la boutique</span>
           <b aria-hidden="true">↓</b>
         </a>
       </div>
     </div>
   </section>
 
-  <section id="products" class="section section-muted">
+  <section id="products" class="section section-muted cf-legacy">
     <div class="container">
       <div class="section-heading">
         <span class="section-kicker" data-i18n="products_kicker">Standard product supply</span>
@@ -225,7 +227,7 @@
     </div>
   </section>
 
-  <section id="boutique" class="shop-section" aria-labelledby="shop-title">
+  <section id="boutique" class="shop-section cf-page" aria-labelledby="shop-title">
     <div class="container shop-head">
       <div>
         <span class="section-kicker">Boutique Challenge Food</span>
@@ -294,7 +296,7 @@
     </div>
   </section>
 
-  <section id="special" class="section">
+  <section id="special" class="section cf-legacy">
     <div class="container">
       <div class="section-heading narrow">
         <span class="section-kicker" data-i18n="special_kicker">Special specifications · on request</span>
@@ -312,7 +314,7 @@
     </div>
   </section>
 
-  <section id="quality" class="section section-muted">
+  <section id="quality" class="section section-muted cf-page">
     <div class="container">
       <div class="section-heading narrow"><span class="section-kicker" data-i18n="quality_kicker">Origin, preparation & quality</span><h2 data-i18n="quality_title">From green pods to prepared export lots</h2><p data-i18n="quality_intro">Product condition and specifications are assessed against the lot offered to the buyer.</p></div>
       <div class="process-gallery">
@@ -330,16 +332,16 @@
     </div>
   </section>
 
-  <section class="photo-band"><img src="assets/green-vine.webp" alt="Vanilla pods on the vine in Madagascar" loading="lazy"><div class="photo-band-copy"><span data-i18n="origin_matters">Origin matters</span><strong data-i18n="origin_title">Madagascar Bourbon Vanilla</strong></div></section>
+  <section class="photo-band cf-legacy"><img src="assets/green-vine.webp" alt="Vanilla pods on the vine in Madagascar" loading="lazy"><div class="photo-band-copy"><span data-i18n="origin_matters">Origin matters</span><strong data-i18n="origin_title">Madagascar Bourbon Vanilla</strong></div></section>
 
-  <section id="compliance" class="section section-dark">
+  <section id="compliance" class="section section-dark cf-page">
     <div class="container compliance-grid">
       <div><span class="section-kicker light" data-i18n="cred_kicker">Company credentials</span><h2 data-i18n="cred_title">Registered import-export activity in Madagascar</h2><p data-i18n="cred_p1">Challenge Food SARL is registered in Madagascar. The company's registered activity includes import-export operations and the export of plant products, expressly including vanilla.</p><p class="legal-note"><span data-i18n="rcs_label">RCS Antananarivo:</span> <strong>2022 B 00157</strong>. <span data-i18n="cred_p2">Official company documents can be provided directly to qualified buyers for supplier due diligence.</span></p></div>
       <div class="credential-card"><div class="credential-badge">CF</div><h3 data-i18n="package_title">Supplier qualification package</h3><ul><li data-i18n="package_li1">Company registration information</li><li data-i18n="package_li2">Registered activity documents</li><li data-i18n="package_li3">Lot specifications / COA where applicable</li><li data-i18n="package_li4">Organic / Fairtrade certificates for eligible lots</li><li data-i18n="package_li5">Export and shipment documents</li></ul><a class="btn btn-light magnetic" href="#requests" data-open-tab="info" data-i18n="package_btn">Request company documents</a></div>
     </div>
   </section>
 
-  <section id="requests" class="section request-section">
+  <section id="requests" class="section request-section cf-page">
     <div class="container">
       <div class="section-heading narrow"><span class="section-kicker" data-i18n="request_kicker">Contact Challenge Food</span><h2 data-i18n="request_title">Order, request a quotation, or ask for information</h2><p data-i18n="request_intro">Use the commercial form for product enquiries and quotations. Use the information form for general questions or company documentation.</p></div>
       <div class="request-shell">
