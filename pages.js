@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const pageIds = ['home','company','vanilla-journey','rse','boutique','quality','compliance','requests'];
+  const pageIds = ['home','company','vanilla-journey','rse','resources','boutique','quality','compliance','requests'];
   const aliases = {products:'boutique', special:'boutique', top:'home', 'industrial-buy':'boutique'};
   const pages = pageIds.map(id => document.getElementById(id)).filter(Boolean);
   const header = document.querySelector('.site-header');
