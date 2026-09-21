@@ -72,3 +72,25 @@ body.cf-pages-ready .resource-center-floating{display:none!important}
   .rse-card.rse-wide{grid-column:auto}
   .rse-card .rse-photo,.rse-card.rse-wide .rse-photo{min-height:280px}
 }
+
+
+/* RSE photos integrated from the latest field images supplied by Challenge Food */
+.rse-photo-curing{background-image:linear-gradient(rgba(8,42,29,.12),rgba(8,42,29,.18)),url('assets/rse-community-1.webp')}
+.rse-photo-school-log{background-image:url('assets/rse-community-2.webp')}
+.rse-photo-school-yard{background-image:url('assets/community.webp')}
+.rse-photo-school-group{background-image:url('assets/community.webp');background-position:center 35%}
+.rse-photo-seedling{background-image:url('assets/green-vine.webp');background-position:center}
+.rse-photo-reforestation{background-image:url('assets/green-hand.webp');background-position:center}
+
+/* Absolute cleanup of obsolete floating resource widgets */
+body.cf-pages-ready .buyer-resource-center,
+body.cf-pages-ready .resource-center-floating,
+body.cf-pages-ready [data-resource-center],
+body.cf-pages-ready .resource-center,
+body.cf-pages-ready .floating-resource-card,
+body.cf-pages-ready .buyer-resources{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
