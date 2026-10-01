@@ -21,7 +21,7 @@ const HOME_SCHEMA = JSON.stringify({
       '@id': 'https://cfood.store/#organization',
       name: 'Challenge Food SARL',
       legalName: 'Challenge Food SARL',
-      alternateName: 'Challenge Food',
+      alternateName: ['Challenge Food', 'Challenge Food export', 'Cfood', 'cfood.store'],
       url: 'https://cfood.store/',
       logo: 'https://cfood.store/assets/logo.png',
       email: 'commercial.export@cfood.store',
@@ -44,8 +44,12 @@ const HOME_SCHEMA = JSON.stringify({
         availableLanguage: ['en', 'fr']
       },
       sameAs: [
+        'https://freshdi.com/supplier/Challenge-Food',
+        'https://www.tridge.com/find-suppliers/basic/challenge-food-export',
         'https://www.goafricaonline.com/mg/624203-challenge-food-import-export-antananarivo-madagascar',
-        'https://www.algomtl.com/jauresram'
+        'https://www.madagascarvanilla.com/previous_lists.html',
+        'https://www.algomtl.com/jauresram',
+        'https://www.globalsuppliersonline.com/supplier/Challenge-Food?id=590509'
       ]
     },
     {
