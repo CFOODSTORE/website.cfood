@@ -134,6 +134,15 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    // Consolidate legacy/alternate hosts for SEO and analytics.
+    if (url.protocol !== 'https:' || url.hostname === 'www.cfood.store') {
+      const canonical = new URL(request.url);
+      canonical.protocol = 'https:';
+      canonical.hostname = 'cfood.store';
+      canonical.port = '';
+      return Response.redirect(canonical.toString(), 301);
+    }
+
     if (url.pathname.startsWith('/api/admin/')) {
       return handleAdminApi(request, env);
     }
