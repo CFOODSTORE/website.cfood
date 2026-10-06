@@ -11,6 +11,10 @@
 
   if(!pages.length) return;
 
+  function removeInternalFormNotes(){
+    document.querySelectorAll('[data-i18n="form_service_note"],[data-i18n="info_alias_note"]').forEach(el=>el.remove());
+  }
+
   function syncHeader(){
     const h=Math.max(64,Math.round(header?.getBoundingClientRect().height||88));
     document.documentElement.style.setProperty('--cf-header-h',h+'px');
@@ -46,6 +50,7 @@
     if(prev) prev.disabled=current===0;
     if(next) next.disabled=current===pages.length-1;
     window.CFoodTranslate?.();
+    removeInternalFormNotes();
   }
 
   function go(index,hash){
@@ -155,6 +160,7 @@
   switcher.querySelector('[data-page-next]')?.addEventListener('click',()=>go(current+1,'#'+pages[current+1]?.id));
 
   syncHeader();
+  removeInternalFormNotes();
   window.addEventListener('resize',syncHeader,{passive:true});
   document.body.classList.add('cf-pages-ready');
   route(location.hash||'#home',true);
